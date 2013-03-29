@@ -55,7 +55,7 @@ end
  
 desc "Stop Unicorn"
 task :stop, roles: :app, :except => { :no_release => true } do
-	run "kill -s QUIT `cat /tmp/unicorn.my_app_name.pid`"
+	run "kill -s QUIT `cat /tmp/unicorn.nomelette.pid`"
 end
  
  
