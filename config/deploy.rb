@@ -28,9 +28,9 @@ set :default_environment, {
  
  
 namespace :deploy do
-	desc "Zero-downtime restart of Unicorn"
-	task :restart, roles: :app, :except => { :no_release => true } do
-	run "kill -s USR2 `cat /tmp/unicorn.nomelette.pid`"
+	#desc "Zero-downtime restart of Unicorn"
+	#task :restart, roles: :app, :except => { :no_release => true } do
+	#run "kill -s USR2 `cat /tmp/unicorn.nomelette.pid`"
 
 	namespace :assets do
     	task :precompile, :roles => :web, :except => { :no_release => true } do
