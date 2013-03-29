@@ -6,7 +6,7 @@ env = ENV["RAILS_ENV"] || "development"
 # See http://unicorn.bogomips.org/Unicorn/Configurator.html for complete documentation.
 worker_processes 2 # amount of unicorn workers to spin up
  
-listen "/tmp/nomelette.socket"
+listen "/tmp/nomelette.sock"
  
 preload_app true
  
