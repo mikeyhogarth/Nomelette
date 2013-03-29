@@ -6,22 +6,22 @@ env = ENV["RAILS_ENV"] || "development"
 # See http://unicorn.bogomips.org/Unicorn/Configurator.html for complete documentation.
 worker_processes 2 # amount of unicorn workers to spin up
  
-listen "/tmp/my_app_name.socket"
+listen "/tmp/nomelette.socket"
  
 preload_app true
  
 timeout 30 # restarts workers that hang for 30 seconds
  
-pid "/tmp/unicorn.my_app_name.pid"
+pid "/tmp/unicorn.nomelette.pid"
  
 if env == "production"
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
-working_directory "/u/apps/my_app_name/current"
+working_directory "/u/apps/nomelette/current"
  
 # feel free to point this anywhere accessible on the filesystem
 user 'app_user', 'app_user' # 'user', 'group'
-shared_path = "/u/apps/my_app_name/shared"
+shared_path = "/u/apps/nomelette/shared"
  
 stderr_path "#{shared_path}/log/unicorn.stderr.log"
 stdout_path "#{shared_path}/log/unicorn.stdout.log"
@@ -44,7 +44,7 @@ end
 # we send it a QUIT.
 #
 # This enables 0 downtime deploys.
-old_pid = "/tmp/unicorn.my_app_name.pid.oldbin"
+old_pid = "/tmp/unicorn.nomelette.pid.oldbin"
 if File.exists?(old_pid) && server.pid != old_pid
 begin
 Process.kill("QUIT", File.read(old_pid).to_i)
