@@ -2,6 +2,15 @@ Nomelette::Application.routes.draw do
 
   root :to => 'home#index'
 
+  #authentication routes
+  match 'login' => 'sessions#new', :as => :login
+  match 'logout' => 'sessions#destroy', :as => :logout
+  match 'authenticate' => 'sessions#create', :as => :authenticate
+
+  namespace :admin do
+    resources :users
+  end
+
   get "home/index"
   get "home/about", :as => :about
   get "home/contact", :as => :contact
