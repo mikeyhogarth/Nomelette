@@ -9,9 +9,9 @@ Nomelette::Application.routes.draw do
 
   namespace :admin do
     resources :users
+    root :to => "home#index" 
   end
 
-  get "home/index"
   get "home/about", :as => :about
   get "home/contact", :as => :contact
 
