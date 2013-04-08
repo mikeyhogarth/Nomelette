@@ -10,7 +10,11 @@
 
   <section class="top-bar-section">
     <ul class="right">
-      <%= content_tag(:li, link_to("Admin", :admin_users)) if current_user and current_user.admin? %>
+      <% if current_user and current_user.admin? %>
+        <%= content_tag(:li, link_to("Admin", :admin_users)) %>
+        <%= content_tag :li, nil, :class => "divider" %>
+        <%= content_tag(:li, link_to("Logout", :logout)) %>
+      <% end %>
       <%= content_tag :li, nil, :class => "divider" %>
       <%= content_tag :li, link_to("Home", :root) %>
       <%= content_tag :li, nil, :class => "divider" %>

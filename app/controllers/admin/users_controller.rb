@@ -1,6 +1,5 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < AdminApplicationController
 
-  before_filter :admin_only!
 
   # GET /admin/users
   def index
@@ -36,6 +35,7 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+
   # PUT /admin/users/1
   def update
     @user = User.find(params[:id])
@@ -53,4 +53,5 @@ class Admin::UsersController < ApplicationController
     @user.destroy
     redirect_to admin_users_url 
   end
+
 end

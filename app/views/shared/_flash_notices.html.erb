@@ -1,7 +1,11 @@
-<% unless(flash.empty?) %>
-<ul>
-	<% flash.each do |name, msg| %>
-	<%= content_tag :li, msg %>
-	<% end %>
-</ul>
+<% unless flash.empty? %>
+	<div class = "alert panel">
+		<ul>
+			<% flash.each do |name, msg| %>
+				<li>
+					<%= msg %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
 <% end %>
