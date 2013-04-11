@@ -41,9 +41,8 @@ class Admin::RecipesController < ApplicationController
   # PUT /admin/recipes/1.json
   def update
     @recipe = Recipe.find(params[:id])
-
     
-    if @recipe.update_attributes(params[:admin_recipe])
+    if @recipe.update_attributes(params[:recipe])
       redirect_to [:admin, @recipe], notice: 'Recipe was successfully updated.' 
     else
       render action: "edit" 

@@ -1,5 +1,7 @@
 Nomelette::Application.routes.draw do
 
+  resources :recipes, :only => :show
+
   namespace :admin do
     resources :recipes
   end

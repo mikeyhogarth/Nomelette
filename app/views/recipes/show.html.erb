@@ -1,0 +1,34 @@
+
+<% page_title(@recipe.name) %>
+
+<%= render :layout => "shared/page_header" do %>
+	<h1><%= @recipe.name %></h1>	
+<% end %>
+
+<p><%= @recipe.description %></p>
+
+<dl>
+	<% if(@recipe.serves) %>
+		<dt>Serves</dt><dl><%= @recipe.serves %></dl>
+	<% end %>
+
+	<% if(@recipe.cooking_time) %>
+		<dt>Cooking Time</dt><dl><%= @recipe.cooking_time %></dl>
+	<% end %>
+</dl>
+
+<img src = "http://placekitten.com/g/1000/500" />			
+
+<h2>Ingredients</h2>
+<ul>
+	<% @recipe.ingredients.each_line do |ingredient| %>
+		<li><%= format_ingredient(ingredient) %></li>
+	<% end %>
+</ul>
+
+<h2>Method</h2>
+<ol>
+	<% @recipe.method.each_line do |method| %>
+		<li><%= method %></li>
+	<% end %> 
+</ol>

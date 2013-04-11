@@ -1,11 +1,5 @@
 <% unless flash.empty? %>
-	<div class = "alert panel">
-		<ul>
-			<% flash.each do |name, msg| %>
-				<li>
-					<%= msg %>
-				</li>
-			<% end %>
-		</ul>
-	</div>
+	<% flash.each do |name, msg| %>				
+		<div class = "alert-box"><%= msg %></div>			
+	<% end %>	
 <% end %>
