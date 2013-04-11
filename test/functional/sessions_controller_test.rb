@@ -1,14 +1,19 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
-  test "should get create" do
-    get :create
-    assert_response :success
+  
+  test "should allow users to log in with correct password" do
+  	post :create, { username: "admin_user", password: "the wrong password"}
+  	assert_redirected_to login_path
+  
+    post :create, { username: "admin_user", password: "password" }
+    assert_redirected_to root_path
   end
 
-  test "should get destroy" do
+
+  test "should allow users to log out" do
     get :destroy
-    assert_response :success
+    assert_redirected_to root_path
   end
 
 end

@@ -1,47 +1,56 @@
 require 'test_helper'
 
 class Admin::UsersControllerTest < ActionController::TestCase
+
   setup do
-    @admin_user = admin_users(:one)
+    login_as(:admin_user)
+    @user = users(:normal_user)
   end
 
-  test "should get index" do
+  test "should not let normal users in" do
+    login_as(:normal_user)
+    get :index
+    assert_redirected_to login_path
+  end
+
+  test "should get user admin home page" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:admin_users)
+    assert_not_nil assigns(:users)
   end
 
-  test "should get new" do
+  test "should get new user page" do
     get :new
     assert_response :success
   end
 
-  test "should create admin_user" do
-    assert_difference('Admin::User.count') do
-      post :create, admin_user: { admin: @admin_user.admin, password_digest: @admin_user.password_digest, username: @admin_user.username }
+  test "should allow new user to be created" do
+    assert_difference('User.count') do
+      post :create, user: { username: "test_user", admin: false, password: "foo", password_confirmation: "foo" }
     end
 
-    assert_redirected_to admin_user_path(assigns(:admin_user))
+    assert_redirected_to admin_user_path(assigns(:user))
   end
 
-  test "should show admin_user" do
-    get :show, id: @admin_user
+  test "should show a user" do
+    get :show, id: @user
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, id: @admin_user
+  test "should get edit user page" do
+    get :edit, id: @user
     assert_response :success
   end
 
-  test "should update admin_user" do
-    put :update, id: @admin_user, admin_user: { admin: @admin_user.admin, password_digest: @admin_user.password_digest, username: @admin_user.username }
-    assert_redirected_to admin_user_path(assigns(:admin_user))
+  test "should allow user to be updated" do
+    put :update, id: @user, admin_user: { admin: @user.admin, password_digest: @user.password_digest, username: @user.username }
+    assert(assigns(:user))
+    assert_redirected_to admin_user_path(assigns(:user))
   end
 
-  test "should destroy admin_user" do
-    assert_difference('Admin::User.count', -1) do
-      delete :destroy, id: @admin_user
+  test "should allow user to be deleted" do
+    assert_difference('User.count', -1) do
+      delete :destroy, id: @user
     end
 
     assert_redirected_to admin_users_path

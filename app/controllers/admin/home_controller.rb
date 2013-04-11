@@ -1,4 +1,5 @@
-class Admin::HomeController < AdminApplicationController
+class Admin::HomeController < ApplicationController
+  before_filter :admin_only!
   
   def index
   end

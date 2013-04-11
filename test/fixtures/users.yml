@@ -1,0 +1,11 @@
+# NB in both cases these passwords are set to "password"
+
+normal_user:
+  username: normal_user
+  password_digest: $2a$10$WXbypZGq7XRkHEwhK6g4AeucxqBMQoGMMNPOoEH/faajQ1sWUfxZa
+  admin: false
+
+admin_user:
+  username: admin_user
+  password_digest: $2a$10$WXbypZGq7XRkHEwhK6g4AeucxqBMQoGMMNPOoEH/faajQ1sWUfxZa
+  admin: true

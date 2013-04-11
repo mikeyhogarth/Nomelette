@@ -1,5 +1,10 @@
 Nomelette::Application.routes.draw do
 
+  namespace :admin do
+    resources :recipes
+  end
+
+
   root :to => 'home#index'
 
   #authentication routes

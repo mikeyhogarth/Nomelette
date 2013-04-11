@@ -1,9 +1,20 @@
 require 'test_helper'
 
 class Admin::HomeControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
+
+setup do
+	login_as(:admin_user)
+end
+
+test "should get index" do
+	get :index
     assert_response :success
-  end
+end
+
+test "should not let normal users in" do
+	login_as(:normal_user)
+	get :index
+	assert_redirected_to login_path
+end
 
 end

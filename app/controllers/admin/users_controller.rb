@@ -1,5 +1,6 @@
-class Admin::UsersController < AdminApplicationController
-
+class Admin::UsersController < ApplicationController
+  
+  before_filter :admin_only!
 
   # GET /admin/users
   def index
