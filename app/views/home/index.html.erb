@@ -10,12 +10,15 @@
 	<img src = "http://placekitten.com/g/1000/400" />			
 
 	<h2>Latest Recipes</h2>
-	<article>
+	
 	<% @latest_recipes.each do |recipe| %>
-
+		<article>
 		<%= content_tag :h3, link_to(recipe.name, recipe) %>
-		<%= content_tag :strong, " (Vegetarian)" if recipe.vegetarian? %>
-		<%= recipe.description %>
 
+		<p>
+		<%= content_tag :strong, "Vegetarian. " if recipe.vegetarian? %>
+		<%= recipe.description %>
+		</p>
+		</article>
 	<% end %> 
-	</article>
+	
