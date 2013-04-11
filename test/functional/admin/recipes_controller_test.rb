@@ -1,11 +1,11 @@
 require 'test_helper'
 
 class Admin::RecipesControllerTest < ActionController::TestCase
+
   setup do
     login_as(:admin_user)
     @recipe = recipes(:spag_bol)
   end
-
 
   test "should not let normal users in" do
     login_as(:normal_user)
