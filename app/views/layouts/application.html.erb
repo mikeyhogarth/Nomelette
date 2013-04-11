@@ -27,11 +27,12 @@
     <div class = "row">
         <%= render "shared/flash_notices" %>
         <%= yield %>
-      
+
     </div>
     
     <%= render "shared/footer" %>
     
     <%= javascript_include_tag "application" %>
+    <%= render "shared/tracking_codes" %>
   </body>
 </html>
