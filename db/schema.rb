@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411175023) do
+ActiveRecord::Schema.define(:version => 20130411182507) do
 
   create_table "recipes", :force => true do |t|
     t.string   "name"
@@ -24,7 +24,10 @@ ActiveRecord::Schema.define(:version => 20130411175023) do
     t.datetime "updated_at",   :null => false
     t.text     "footnote"
     t.boolean  "vegetarian"
+    t.string   "slug"
   end
+
+  add_index "recipes", ["slug"], :name => "index_recipes_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username"

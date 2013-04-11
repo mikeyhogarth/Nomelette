@@ -26,7 +26,7 @@ class Admin::RecipesControllerTest < ActionController::TestCase
 
   test "should allow new recipes to be created" do
     assert_difference('Recipe.count') do
-      post :create, recipe: { cooking_time: @recipe.cooking_time, description: @recipe.description, ingredients: @recipe.ingredients, method: @recipe.method, name: @recipe.name, serves: @recipe.serves }
+      post :create, recipe: { cooking_time: @recipe.cooking_time, description: @recipe.description, ingredients: @recipe.ingredients, method: @recipe.method, name: "Test Recipe", serves: @recipe.serves }
     end
 
     assert_redirected_to admin_recipe_path(assigns(:recipe))

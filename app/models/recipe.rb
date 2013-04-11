@@ -1,5 +1,9 @@
 class Recipe < ActiveRecord::Base
 	include NomeletteHelpers
+	extend FriendlyId
+
+	#Friendly id gem gives nicer URL
+  	friendly_id :name, use: :slugged
 
   	attr_accessible :name, :description, :ingredients, :method, :cooking_time, :serves, :vegetarian, :footnote
 
