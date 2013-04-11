@@ -14,6 +14,9 @@
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
+  </div>  
+  <div class="field">
+    <%= f.label :vegetarian %> <%= f.check_box :vegetarian %>
   </div>
   <div class="field">
     <%= f.label :serves %><br />
@@ -34,6 +37,10 @@
   <div class="field">
     <%= f.label :method %><br />
     <%= f.text_area :method, :rows => 10 %>
+  </div>
+  <div class="field">
+    <%= f.label :footnote %><br />
+    <%= f.text_area :footnote, :rows => 2 %>
   </div>
   <div class="actions">
     <%= f.submit %>

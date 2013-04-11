@@ -1,7 +1,7 @@
 class Recipe < ActiveRecord::Base
 	include NomeletteHelpers
 
-  	attr_accessible :name, :description, :ingredients, :method, :cooking_time, :serves
+  	attr_accessible :name, :description, :ingredients, :method, :cooking_time, :serves, :vegetarian, :footnote
 
   	#validations
 	validates_presence_of :name, :ingredients, :method
@@ -15,6 +15,13 @@ class Recipe < ActiveRecord::Base
 	#callbacks
 	before_save :tidy_up_user_input
 
+	#public methods
+	def mentions_serves_or_cooking_time
+		return !(self.cooking_time.empty? and self.serves.empty?)
+	end
+
+
+	#private methods
 	private
 	def tidy_up_user_input
 		self.description = description.squish

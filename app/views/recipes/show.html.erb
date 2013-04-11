@@ -1,21 +1,25 @@
-
 <% page_title(@recipe.name) %>
 
 <%= render :layout => "shared/page_header" do %>
-	<h1><%= @recipe.name %></h1>	
+	<h1><%= @recipe.name %></h1>
 <% end %>
 
-<p><%= @recipe.description %></p>
+<p>
+	<%= @recipe.description %>
+	<%= content_tag :strong, "Suitable for vegetarians" if @recipe.vegetarian? %>
+</p>
 
-<dl>
-	<% if(@recipe.serves) %>
-		<dt>Serves</dt><dl><%= @recipe.serves %></dl>
-	<% end %>
+<% if @recipe.mentions_serves_or_cooking_time %>
+	<dl>
+		<% if(@recipe.serves) %>
+			<dt>Serves</dt><dl><%= @recipe.serves %></dl>
+		<% end %>
 
-	<% if(@recipe.cooking_time) %>
-		<dt>Cooking Time</dt><dl><%= @recipe.cooking_time %></dl>
-	<% end %>
-</dl>
+		<% if(@recipe.cooking_time) %>
+			<dt>Cooking Time</dt><dl><%= @recipe.cooking_time %></dl>
+		<% end %>
+	</dl>
+<% end %> 
 
 <img src = "http://placekitten.com/g/1000/500" />			
 
@@ -32,3 +36,5 @@
 		<li><%= method %></li>
 	<% end %> 
 </ol>
+
+<%= content_tag :aside, @recipe.footnote if @recipe.footnote %>

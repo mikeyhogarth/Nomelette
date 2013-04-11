@@ -1,6 +1,8 @@
 Nomelette::Application.routes.draw do
 
-  resources :recipes, :only => :show
+  get "recipes/index"
+
+  resources :recipes, :only => [:index, :show]
 
   namespace :admin do
     resources :recipes
