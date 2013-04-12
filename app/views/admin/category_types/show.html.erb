@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @category_type.name %>
+</p>
+
+<p>
+  <b>Slug:</b>
+  <%= @category_type.slug %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_category_type_path(@category_type) %> |
+<%= link_to 'Back', admin_category_types_path %>

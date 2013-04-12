@@ -11,7 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411182507) do
+ActiveRecord::Schema.define(:version => 20130412100958) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "category_type_id"
+  end
+
+  create_table "categories_recipes", :id => false, :force => true do |t|
+    t.integer "recipe_id"
+    t.integer "category_id"
+  end
+
+  add_index "categories_recipes", ["category_id", "recipe_id"], :name => "index_categories_recipes_on_category_id_and_recipe_id"
+  add_index "categories_recipes", ["recipe_id", "category_id"], :name => "index_categories_recipes_on_recipe_id_and_category_id"
+
+  create_table "category_types", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "recipes", :force => true do |t|
     t.string   "name"

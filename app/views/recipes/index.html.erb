@@ -4,11 +4,4 @@
 	<h1>Recipes</h1>
 <% end %>
 
-<ol>
-	<% @recipes.each do |recipe| %>
-	<li>
-		<%= link_to recipe.name, recipe %> 
-		<%= content_tag :strong, " (Vegetarian)" if recipe.vegetarian? %>
-	</li>
-	<% end %>
-</ol>
+<%= render @recipes %>

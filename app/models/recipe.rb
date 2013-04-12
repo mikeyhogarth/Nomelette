@@ -5,11 +5,14 @@ class Recipe < ActiveRecord::Base
 	#Friendly id gem gives nicer URL
   	friendly_id :name, use: :slugged
 
-  	attr_accessible :name, :description, :ingredients, :method, :cooking_time, :serves, :vegetarian, :footnote
+  	attr_accessible :name, :description, :ingredients, :method, :cooking_time, :serves, :vegetarian, :footnote, :category_ids
 
   	#validations
 	validates_presence_of :name, :ingredients, :method
 	validates_uniqueness_of :name
+
+	#associations
+	has_and_belongs_to_many :categories
 	  
 	#scopes
 	scope :latest, lambda { |num| {:order => "created_at DESC", :limit => num} }

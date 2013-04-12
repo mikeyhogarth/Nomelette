@@ -4,6 +4,11 @@
 	<h1><%= @recipe.name %></h1>
 <% end %>
 
+
+<p>
+	<%= pluralize_without_count(@recipe.categories.count, "Category") %>: <%= comma_seperated_links_for @recipe.categories %>
+</p>
+
 <p>
 	<%= @recipe.description %>
 	<%= content_tag :strong, "Suitable for vegetarians" if @recipe.vegetarian? %>
@@ -11,11 +16,11 @@
 
 <% if @recipe.mentions_serves_or_cooking_time %>
 	<dl>
-		<% if(@recipe.serves) %>
+		<% if(!@recipe.serves.empty?) %>
 			<dt>Serves</dt><dl><%= @recipe.serves %></dl>
 		<% end %>
 
-		<% if(@recipe.cooking_time) %>
+		<% if(!@recipe.cooking_time.empty?) %>
 			<dt>Cooking Time</dt><dl><%= @recipe.cooking_time %></dl>
 		<% end %>
 	</dl>

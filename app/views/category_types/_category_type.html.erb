@@ -1,0 +1,6 @@
+
+<% unless category_type.categories.empty? %>
+	<%= content_tag :h2, category_type.name %>
+	<%= comma_seperated_links_for(category_type.categories) %>
+<% end %> 
+

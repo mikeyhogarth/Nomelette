@@ -1,0 +1,25 @@
+<h1>Listing admin_category_types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Slug</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @category_types.each do |category_type| %>
+  <tr>
+    <td><%= category_type.name %></td>
+    <td><%= category_type.slug %></td>
+    <td><%= link_to 'Show', [:admin, category_type] %></td>
+    <td><%= link_to 'Edit', edit_admin_category_type_path(category_type) %></td>
+    <td><%= link_to 'Destroy', [:admin,category_type], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Category type', new_admin_category_type_path %>

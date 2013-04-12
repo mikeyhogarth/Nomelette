@@ -1,0 +1,4 @@
+<article>
+	<%= link_to recipe.name, recipe %> 
+	<%= content_tag :strong, " (Vegetarian)" if recipe.vegetarian? %>
+</article>

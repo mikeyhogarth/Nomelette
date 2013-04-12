@@ -1,24 +1,22 @@
 <% page_title("The Recipes of Sheila Hogarth") %>
 
-	<div class = "panel">
-	<%= render :layout => "shared/page_header" do %>
-		<h1>Nomelette<small> The recipes of Sheila Hogarth</small></h1>	
-		<div class="fb-like" data-href="http://www.nomelette.co.uk" data-send="true" data-width="450" data-show-faces="true" data-font="tahoma"></div>
-	<% end %>
-	</div>
+<div class = "panel">
+<%= render :layout => "shared/page_header" do %>
+	<h1>Nomelette<small> The recipes of Sheila Hogarth</small></h1>	
+	<div class="fb-like" data-href="http://www.nomelette.co.uk" data-send="true" data-width="450" data-show-faces="true" data-font="tahoma"></div>
+<% end %>
+</div>
 
-	<img src = "http://placekitten.com/g/1000/400" />			
+<img src = "http://placekitten.com/g/1000/400" />			
 
-	<h2>Latest Recipes</h2>
+<h2>Latest Recipes</h2>	
+<%= render @latest_recipes%>
+
+<hr />
+
+<% @category_types.each do |category_type| %>
 	
-	<% @latest_recipes.each do |recipe| %>
-		<article>
-		<%= content_tag :h3, link_to(recipe.name, recipe) %>
-
-		<p>
-		<%= content_tag :strong, "Vegetarian. " if recipe.vegetarian? %>
-		<%= recipe.description %>
-		</p>
-		</article>
-	<% end %> 
+	<%= content_tag :h2, category_type.name %>			
+	<%= comma_seperated_links_for(category_type.categories) %>			
 	
+<% end %>

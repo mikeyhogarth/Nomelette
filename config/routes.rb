@@ -1,28 +1,28 @@
 Nomelette::Application.routes.draw do
 
-  get "recipes/index"
-
-  resources :recipes, :only => [:index, :show]
-
-  namespace :admin do
-    resources :recipes
-  end
-
-
   root :to => 'home#index'
 
-  #authentication routes
+  #named routes
+  match "about" => 'home#about'   , :as => :about
+  match "contact" => 'home#contact' , :as => :contact
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'authenticate' => 'sessions#create', :as => :authenticate
 
-  namespace :admin do
-    resources :users
-    root :to => "home#index" 
-  end
+  #public REST routes
+  resources :recipes, :only => [:index, :show]
+  resources :categories, :only => [:show, :index]
+  resources :category_types, :only => [:index]
 
-  get "home/about", :as => :about
-  get "home/contact", :as => :contact
+  #Admin area
+  namespace :admin do
+    root :to => "home#index" 
+    
+    resources :recipes
+    resources :categories
+    resources :category_types
+    resources :users    
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
