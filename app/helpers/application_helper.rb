@@ -6,6 +6,12 @@ module ApplicationHelper
   		end
 	end
 
+  def page_description(description)
+    content_for :description do
+        description
+      end
+  end
+
 	#Comma selerated list for links such as categories
 	def comma_seperated_links_for(list)
     	return if list.count == 0

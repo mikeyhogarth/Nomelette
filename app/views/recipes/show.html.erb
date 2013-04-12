@@ -1,4 +1,5 @@
 <% page_title(@recipe.name) %>
+<% page_description(@recipe.description || "Recipe for #{@recipe.name}") %>
 
 <%= render :layout => "shared/page_header" do %>
 	<h1><%= @recipe.name %></h1>
