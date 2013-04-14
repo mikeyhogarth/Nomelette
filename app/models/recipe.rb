@@ -5,7 +5,15 @@ class Recipe < ActiveRecord::Base
 	#Friendly id gem gives nicer URL
   	friendly_id :name, use: :slugged
 
-  	attr_accessible :name, :description, :ingredients, :method, :cooking_time, :serves, :vegetarian, :footnote, :category_ids
+  	attr_accessible :name, :image, :description, :ingredients, :method, :cooking_time, :serves, :vegetarian, :footnote, :category_ids, :slug
+
+  	has_attached_file 	:image, 
+  						:styles => { :full => "500x500>", :medium => "300x300>" , :thumb => "100x100>" }, 
+  						:default_url => "/images/:style/missing.png",
+  						:storage => :s3,					    
+					    :path => ":attachment/recipes/:basename/:basename-:style.:extension",
+					    :default_url => "/images/recipes/no-img.jpg"
+
 
   	#validations
 	validates_presence_of :name, :ingredients, :method

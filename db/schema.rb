@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412100958) do
+ActiveRecord::Schema.define(:version => 20130414180408) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -43,11 +43,15 @@ ActiveRecord::Schema.define(:version => 20130412100958) do
     t.text     "description"
     t.text     "ingredients"
     t.text     "method"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.text     "footnote"
     t.boolean  "vegetarian"
     t.string   "slug"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "recipes", ["slug"], :name => "index_recipes_on_slug", :unique => true

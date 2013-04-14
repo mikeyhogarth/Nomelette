@@ -38,4 +38,6 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # To use debugger
 # gem 'debugger'
 
-gem "friendly_id", "~> 4.0.9" # Note: You MUST use 4.0.9 or greater for Rails 3.2.10+
+gem "friendly_id", "~> 4.0.9"
+gem "paperclip", "~> 3.0"
+gem 'aws-sdk'
