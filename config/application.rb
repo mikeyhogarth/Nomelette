@@ -12,15 +12,7 @@ end
 module Nomelette
   class Application < Rails::Application
 
-    config.paperclip_defaults = 
-      {
-        :storage => :s3,
-        :s3_credentials => {
-          :bucket => ENV['NOMELETTE_AWS_BUCKET'],
-          :access_key_id => ENV['NOMELETTE_AWS_ACCESS_KEY_ID'],
-          :secret_access_key => ENV['NOMELETTE_AWS_SECRET_ACCESS_KEY'] 
-        }
-      }
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
