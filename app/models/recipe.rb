@@ -11,11 +11,8 @@ class Recipe < ActiveRecord::Base
   						:styles => { :full => "500x500>", :medium => "300x300>" , :thumb => "100x100>" }, 
   						:default_url => "/images/:style/missing.png",
   						:storage => :s3,	
-  						:s3_credentials => {
-				          :bucket => ENV['NOMELETTE_AWS_BUCKET'],
-				          :access_key_id => ENV['NOMELETTE_AWS_ACCESS_KEY_ID'],
-				          :secret_access_key => ENV['NOMELETTE_AWS_SECRET_ACCESS_KEY'] 
-				        },				    
+  						:s3_credentials => "#{Rails.root}/config/s3.yml",    
+    					:bucket => "nomelette-#{Rails.env}", 						  						
 					    :path => ":attachment/recipes/:basename/:basename-:style.:extension",
 					    :default_url => "/images/recipes/no-img.jpg"
 
