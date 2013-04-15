@@ -12,7 +12,12 @@ end
 module Nomelette
   class Application < Rails::Application
 
-
+    config.paperclip_defaults = 
+      {
+        :storage => :s3,
+        :s3_credentials => "#{Rails.root}/config/private_config/s3.yml",    
+        :bucket => "nomelette-#{Rails.env}"
+      }
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
