@@ -9,11 +9,9 @@ class Recipe < ActiveRecord::Base
 
   	has_attached_file 	:image, 
   						:styles => { :full => "500x500>", :medium => "300x300>" , :thumb => "100x100>" }, 
-  						:default_url => "/images/:style/missing.png",
   						:storage => :s3,					  						
-					    :path => ":attachment/recipes/:basename/:basename-:style.:extension",
-					    :default_url => "/images/recipes/no-img.jpg"
-
+					    :path => ":attachment/recipes/:basename/:basename-:style.:extension"
+					    
 
   	#validations
 	validates_presence_of :name, :ingredients, :method
@@ -34,7 +32,6 @@ class Recipe < ActiveRecord::Base
 	def mentions_serves_or_cooking_time
 		return !(self.cooking_time.empty? and self.serves.empty?)
 	end
-
 
 	#private methods
 	private

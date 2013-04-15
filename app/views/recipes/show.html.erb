@@ -12,8 +12,9 @@
 
 <p>
 	<%= @recipe.description %>
-	<%= content_tag :strong, "Suitable for vegetarians" if @recipe.vegetarian? %>
+	<%= content_tag :span, "Suitable for vegetarians" if @recipe.vegetarian? %>
 </p>
+
 
 <% if @recipe.mentions_serves_or_cooking_time %>
 	<dl>
@@ -27,7 +28,12 @@
 	</dl>
 <% end %> 
 
-<%= image_tag @recipe.image.url(:full) %>
+
+<% if @recipe.image.exists? %>
+	<%= image_tag @recipe.image.url(:full) %>
+<% else %>
+	<%= image_tag "no-img.jpg"  %>
+<% end %>
 
 <h2>Ingredients</h2>
 <ul>
