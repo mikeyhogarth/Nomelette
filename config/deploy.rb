@@ -50,9 +50,16 @@ namespace :deploy do
 end
 
 namespace :custom do
-    task :symlinks, :roles => :app do
+  
+  task :symlinks, :roles => :app do
     run %Q{ln -nfs #{shared_path}/private_config/ #{release_path}/config/}
   end
+  task :refresh_sitemaps do
+    run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
+  end
+
 end
 
-after "deploy:restart", "custom:symlinks"
+
+before "deploy:restart", "custom:symlinks"
+after "deploy", "custom:refresh_sitemaps"
