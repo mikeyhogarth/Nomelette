@@ -1,0 +1,13 @@
+<div class = "row">
+	<% if(!current_user) %>
+		<%= link_to "Sign in with Facebook", "/auth/facebook" %>
+	<% else %>
+		<p>
+		<% if(current_user.user_profile) %>
+			<%= image_tag current_user.user_profile.avatar_url %>
+			Logged In As <%= content_tag :strong, current_user.user_profile.full_name %>
+		<% end %>
+		<%= link_to "Log Out", logout_path %>
+		</p>
+	<% end %>
+</div>

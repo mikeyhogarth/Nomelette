@@ -6,6 +6,7 @@ Nomelette::Application.routes.draw do
   match "about" => 'home#about'   , :as => :about
   match "contact" => 'home#contact' , :as => :contact
   match 'login' => 'sessions#new', :as => :login
+  match 'admin/login' => 'sessions#new_admin', :as => :admin_login
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'authenticate' => 'sessions#create', :as => :authenticate
 
@@ -23,6 +24,9 @@ Nomelette::Application.routes.draw do
     resources :category_types
     resources :users    
   end
+
+  #provider authentication
+  match "/auth/:provider/callback" => "sessions#create"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

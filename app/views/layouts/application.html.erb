@@ -4,12 +4,19 @@
 <!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+
+<% if facebook_session_token %>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# nomelette: http://ogp.me/ns/fb/nomelette#">
+<% else %>
   <head>
-  	
-  	<title>Nomelette <%= content_for?(:title) ? "&raquo; #{ yield(:title) }".html_safe  : "" %></title>
+<% end %> 
+  
+   	<title>Nomelette <%= content_for?(:title) ? "&raquo; #{ yield(:title) }".html_safe  : "" %></title>
     <meta name='description' content='<%= content_for?(:description) ? yield(:description).html_safe : "The recipes of Sheila Hogarth" %>' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
+
+    <%= yield (:facebook_og_metas) if content_for?(:facebook_og_metas) %>
 
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
@@ -18,7 +25,7 @@
 
   <body>
     <%= render "shared/facebook_javascript" %>
-    <%= render "shared/navigation" %>
+    <%= render "shared/navigation" %>    
 
     <div class = "row">
         <%= render "shared/flash_notices" %>

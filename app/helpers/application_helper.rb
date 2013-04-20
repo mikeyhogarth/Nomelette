@@ -1,5 +1,6 @@
 module ApplicationHelper
 
+  
 	def page_title(title)
 		content_for :title do
   			title
@@ -10,6 +11,10 @@ module ApplicationHelper
     content_for :description do
         description
       end
+  end
+
+  def current_url
+    "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
   end
 
 	#Comma selerated list for links such as categories

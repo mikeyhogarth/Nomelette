@@ -8,7 +8,7 @@
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
   </ul>
 
-  <section class="top-bar-section">
+  <section class="top-bar-section navigation">
     <ul class="right">      
       <%= content_tag :li, nil, :class => "divider" %>
       <%= content_tag :li, link_to("Home", :root) %>
@@ -24,9 +24,18 @@
       <% if current_user and current_user.admin? %>
         <%= content_tag :li, nil, :class => "divider" %>
         <%= content_tag(:li, link_to("Admin", admin_root_path)) %>
+      <% end %>
+
+      <% if current_user %>
         <%= content_tag :li, nil, :class => "divider" %>
         <%= content_tag(:li, link_to("Logout", :logout)) %>
+        <%= image_tag current_user.user_profile.avatar_url if current_user.user_profile%>
+      <% else %>
+        <%= content_tag :li, nil, :class => "divider" %>
+        <%= content_tag(:li, link_to("Login", :login)) %>
       <% end %>
+
+
     </ul>
   </section>
 
