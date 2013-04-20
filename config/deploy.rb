@@ -61,5 +61,5 @@ namespace :custom do
 end
 
 
-before "deploy:restart", "custom:symlinks"
+after "deploy:assets:symlink", "custom:symlinks"
 after "deploy", "custom:refresh_sitemaps"
