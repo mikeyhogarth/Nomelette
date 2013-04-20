@@ -12,4 +12,7 @@ class Category < ActiveRecord::Base
     belongs_to :category_type
 	has_and_belongs_to_many :recipes
 
+	#scopes
+	default_scope order('categories.name ASC')
+
 end

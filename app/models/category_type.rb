@@ -1,14 +1,17 @@
 class CategoryType < ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :name, :use => :slugged
+	extend FriendlyId
+	friendly_id :name, :use => :slugged
 
-  attr_accessible :name
+	attr_accessible :name
 
-  #validations
-  validates_presence_of :name
-  validates_uniqueness_of :name
+	#validations
+	validates_presence_of :name
+	validates_uniqueness_of :name
 
-  #associations
-  has_many :categories
+	#associations
+	has_many :categories
+
+	#scopes
+	default_scope order('category_types.name ASC')
 
 end

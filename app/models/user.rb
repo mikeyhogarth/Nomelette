@@ -27,4 +27,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  #scopes
+  default_scope order('username DESC')
+
 end
