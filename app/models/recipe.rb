@@ -21,7 +21,7 @@ class Recipe < ActiveRecord::Base
 	has_and_belongs_to_many :categories
 	  
 	#scopes
-	default_scope order('recipes.name DESC')
+	default_scope order('recipes.name ASC')
 	scope :latest, lambda { |num| {:order => "created_at DESC", :limit => num} }
 	scope :with_image, where("image_file_name IS NOT NULL and image_file_name <> ''")
 	scope :popular, lambda { |num| {:limit => num} }

@@ -28,6 +28,6 @@ class User < ActiveRecord::Base
   end
 
   #scopes
-  default_scope order('username DESC')
+  default_scope order('username ASC')
 
 end
