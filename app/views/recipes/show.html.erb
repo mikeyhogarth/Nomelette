@@ -9,12 +9,6 @@
 	<h1><%= @recipe.name %></h1>
 <% end %>
 
-<% if(facebook_session_token) %>	
-	<div class = "facebook_og_section">
-	<%= link_to("I have cooked this!", "https://graph.facebook.com/me/nomelette:cook?access_token=#{facebook_session_token}&method=POST&recipe=#{current_url}", :class => "cooked_on_og") %>
-	</div>
-<% end %>
-
 <p>
 	<%= pluralize_without_count(@recipe.categories.count, "Category") %>: <%= comma_seperated_links_for @recipe.categories %>
 </p>

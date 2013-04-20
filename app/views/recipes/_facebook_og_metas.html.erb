@@ -1,8 +1,7 @@
-    <meta property="fb:app_id" content="625379394143103" /> 
-    <meta property="og:type"   content="nomelette:recipe" /> 
-    <meta property="og:url"    content="<%= current_url %>" /> 
-    <meta property="og:title"  content="<%= @recipe.name %>" /> 
-
-    <% if @recipe.image.exists? %>
-    	<meta property="og:image"  content="<%= @recipe.image.url(:full) %>" /> 
-    <% end %>
+<meta property="fb:app_id" content="625379394143103" /> 
+<meta property="og:type"   content="nomelette:recipe" /> 
+<meta property="og:url"    content="<%= current_url %>" /> 
+<meta property="og:title"  content="<%= @recipe.name %>" /> 
+<% if @recipe.image.exists? %>
+<meta property="og:image"  content="<%= @recipe.image.url(:full) %>" /> 
+<% end %>
