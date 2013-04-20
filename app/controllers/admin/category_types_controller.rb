@@ -1,5 +1,5 @@
 class Admin::CategoryTypesController < ApplicationController
-
+  before_filter :admin_only!
   
   # GET /admin/category_types
   def index

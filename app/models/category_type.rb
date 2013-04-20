@@ -2,7 +2,7 @@ class CategoryType < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :name, :use => :slugged
 
-	attr_accessible :name
+	attr_accessible :name, :slug
 
 	#validations
 	validates_presence_of :name

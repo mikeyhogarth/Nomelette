@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  slug: MyString
+starter:
+  name: Starter
+  slug: starter
 
-two:
-  name: MyString
-  slug: MyString
+winter:
+  name: Winter
+  slug: winter

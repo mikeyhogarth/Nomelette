@@ -10,7 +10,7 @@ class Admin::UsersControllerTest < ActionController::TestCase
   test "should not let normal users in" do
     login_as(:normal_user)
     get :index
-    assert_redirected_to login_path
+    assert_redirected_to admin_login_path
   end
 
   test "should get user admin home page" do
