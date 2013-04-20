@@ -3,7 +3,9 @@
 starter:
   name: Starter
   slug: starter
+  category_type: course
 
 winter:
   name: Winter
   slug: winter
+  category_type: season
