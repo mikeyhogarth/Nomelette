@@ -11,9 +11,12 @@ Nomelette::Application.routes.draw do
   match 'authenticate' => 'sessions#create', :as => :authenticate
 
   #public REST routes
+  get "recipes/tagged_with(/:tag)" => "recipes#tagged_with", :as => :tagged_with
   resources :recipes, :only => [:index, :show]
   resources :categories, :only => [:show, :index]
   resources :category_types, :only => [:index]
+
+
 
   #Admin area
   namespace :admin do

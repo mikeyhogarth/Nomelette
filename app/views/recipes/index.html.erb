@@ -1,7 +1,9 @@
 <% page_title("Recipes") %>
 
 <%= render :layout => "shared/page_header" do %>
-	<h1>Recipes</h1>
+	<h1>
+		Recipes <%= "that use #{@tag}" if @tag %>
+	</h1>
 <% end %>
 
 <%= render @recipes %>

@@ -9,15 +9,24 @@
 	<h1><%= @recipe.name %></h1>
 <% end %>
 
-<p>
-	<%= pluralize_without_count(@recipe.categories.count, "Category") %>: <%= comma_seperated_links_for @recipe.categories %>
-</p>
+
 
 <p>
-	<%= @recipe.description %>
-	<%= content_tag :span, "Suitable for vegetarians" if @recipe.vegetarian? %>
+	<% @recipe.ingredient_tag_list.each do |tag| %>
+		<%= link_to tag, tagged_with_url(:tag => tag), :class => "round label" %>
+	<% end %>
+
+	<% @recipe.categories.each do |category| %>
+		<%= link_to category.name, category, :class => "round label" %>
+	<% end %>
 </p>
 
+<div>
+	<p>
+		<%= @recipe.description %>
+		<%= content_tag :span, "Suitable for vegetarians" if @recipe.vegetarian? %>
+	</p>
+</div>
 
 <% if @recipe.mentions_serves_or_cooking_time %>
 	<dl>
@@ -40,8 +49,8 @@
 
 <h2>Ingredients</h2>
 <ul>
-	<% @recipe.ingredients.each_line do |ingredient| %>
-		<li><%= format_ingredient(ingredient) %></li>
+	<% @recipe.html_ingredients.each_line do |ingredient| %>
+		<li><%= raw ingredient %></li>
 	<% end %>
 </ul>
 

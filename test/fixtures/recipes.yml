@@ -6,6 +6,7 @@ spag_bol:
   cooking_time: 1 hour 30 minutes
   description: This is a description of a spag bol
   ingredients: Ingredient 1 \n Ingredient 2
+  html_ingredients: Ingredient 1 \n Ingredient 2
   method: do this \n do that
 
 
@@ -15,4 +16,5 @@ pasta_bake:
   cooking_time: 25 minutes
   description: This is a description of a pasta bake
   ingredients: Tuna\nPasta
+  html_ingredients: Tuna\nPasta
   method: do this \n do that

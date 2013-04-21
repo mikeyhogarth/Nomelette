@@ -42,7 +42,7 @@ gem 'friendly_id', '~> 4.0.9'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
 gem 'sitemap_generator'
+gem 'acts-as-taggable-on'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
-

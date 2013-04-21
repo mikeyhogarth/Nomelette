@@ -11,10 +11,14 @@ class Recipe < ActiveRecord::Base
   						:styles => { :full => "500x500>", :medium => "300x300>" , :thumb => "100x100>" }, 
   						:storage => :s3,					  						
 					    :path => ":attachment/recipes/:basename/:basename-:style.:extension"
-					    
+	
+
+	acts_as_taggable_on :ingredient_tags
+
+
 
   	#validations
-	validates_presence_of :name, :ingredients, :method
+	validates_presence_of :name, :ingredients, :html_ingredients, :method
 	validates_uniqueness_of :name
 
 	#associations
@@ -27,7 +31,7 @@ class Recipe < ActiveRecord::Base
 	scope :popular, lambda { |num| {:limit => num} }
 
 	#callbacks
-	before_save :tidy_up_user_input
+	before_validation :tidy_up_user_input	
 
 	#public methods
 	def mentions_serves_or_cooking_time
@@ -37,9 +41,29 @@ class Recipe < ActiveRecord::Base
 	#private methods
 	private
 	def tidy_up_user_input
-		self.description = description.squish
+		self.name = name.squish.camelize
+		self.description = description.squish if description
 		self.ingredients = NomeletteHelpers::StringHelper.remove_empty_lines(ingredients)
 		self.method = NomeletteHelpers::StringHelper.remove_empty_lines(method)
+		create_html_equivalent_of_ingredients
+	end
+
+	def create_html_equivalent_of_ingredients
+	
+		#Escape things like fractions
+		self.html_ingredients = NomeletteHelpers::StringHelper.format_ingredient(self.ingredients)
+		
+		ingredient_tag_array = Array.new
+
+		self.ingredients.scan(/\*\w+\*/) do |ingredient|	      
+	      ingredient_without_asterisks = ingredient.gsub("*","")
+	      ingredient_tag = ingredient_without_asterisks.downcase.camelize
+	      self.html_ingredients = html_ingredients.sub(ingredient,"<a href = 'tagged_with/#{ingredient_tag.downcase}'>#{ingredient_tag}</a>")
+	      ingredient_tag_array << ingredient_tag
+	    end
+
+	    self.ingredient_tag_list = ingredient_tag_array.join(", ") 
+
 	end
 
 end
