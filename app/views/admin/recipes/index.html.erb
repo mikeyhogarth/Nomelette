@@ -15,6 +15,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @recipes.each do |recipe| %>
@@ -23,6 +24,7 @@
     <td><%= recipe.serves %></td>
     <td><%= recipe.cooking_time %></td>
     <td><%= recipe.description %></td>
+    <td><%= link_to 'Preview', recipe %></td>
     <td><%= link_to 'Show', [:admin,recipe] %></td>
     <td><%= link_to 'Edit', edit_admin_recipe_path(recipe) %></td>
     <td><%= link_to 'Destroy', [:admin,recipe], method: :delete, data: { confirm: 'Are you sure?' } %></td>
