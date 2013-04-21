@@ -13,9 +13,7 @@ class Recipe < ActiveRecord::Base
 					    :path => ":attachment/recipes/:basename/:basename-:style.:extension"
 	
 
-	acts_as_taggable_on :ingredient_tags
-
-
+	acts_as_taggable_on :ingredient_tags	
 
   	#validations
 	validates_presence_of :name, :ingredients, :html_ingredients, :method
@@ -24,9 +22,8 @@ class Recipe < ActiveRecord::Base
 	#associations
 	has_and_belongs_to_many :categories
 	  
-	#scopes
-	default_scope order('recipes.name ASC')
-	scope :latest, lambda { |num| {:order => "created_at DESC", :limit => num} }
+	#scopes	
+	scope :latest, lambda { |num| {:order => "created_at DESC, name ASC", :limit => num} }
 	scope :with_image, where("image_file_name IS NOT NULL and image_file_name <> ''")
 	scope :popular, lambda { |num| {:limit => num} }
 
@@ -68,7 +65,7 @@ class Recipe < ActiveRecord::Base
 	      	)
 	      
 	      ingredient_tag_array << ingredient_tag unless ingredient_tag_array.include? ingredient_tag
-	      
+
 	    end
 
 	    self.ingredient_tag_list = ingredient_tag_array.join(", ") 
