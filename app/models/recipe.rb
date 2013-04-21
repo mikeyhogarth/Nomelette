@@ -45,21 +45,30 @@ class Recipe < ActiveRecord::Base
 		self.description = description.squish if description
 		self.ingredients = NomeletteHelpers::StringHelper.remove_empty_lines(ingredients)
 		self.method = NomeletteHelpers::StringHelper.remove_empty_lines(method)
-		create_html_equivalent_of_ingredients
+		create_html_equivalent_of_ingredients!
 	end
 
-	def create_html_equivalent_of_ingredients
+
+	def create_html_equivalent_of_ingredients!
 	
 		#Escape things like fractions
 		self.html_ingredients = NomeletteHelpers::StringHelper.format_ingredient(self.ingredients)
 		
+		#Lots of expensive stuff happening here, so we'll calculate it all on save and put it in the database
+		#rather than each time a recipe is rendered.
+		
 		ingredient_tag_array = Array.new
 
-		self.ingredients.scan(/\*\w+\*/) do |ingredient|	      
-	      ingredient_without_asterisks = ingredient.gsub("*","")
-	      ingredient_tag = ingredient_without_asterisks.downcase.camelize
-	      self.html_ingredients = html_ingredients.sub(ingredient,"<a href = 'tagged_with/#{ingredient_tag.downcase}'>#{ingredient_tag}</a>")
-	      ingredient_tag_array << ingredient_tag
+		self.ingredients.scan(/\*([a-zA-Z0-9 ]+)\*/) do |ingredient_match|					  
+
+		  ingredient = ingredient_match[0]	      
+	      ingredient_tag = ingredient.downcase.camelize.gsub("*","")
+	      self.html_ingredients = html_ingredients.sub(
+	      	"*#{ingredient}*","<a href = 'tagged-with/#{ingredient_tag.downcase.gsub(" ","-")}'>#{ingredient_tag}</a>"
+	      	)
+	      
+	      ingredient_tag_array << ingredient_tag unless ingredient_tag_array.include? ingredient_tag
+	      
 	    end
 
 	    self.ingredient_tag_list = ingredient_tag_array.join(", ") 
