@@ -10,7 +10,8 @@ class RecipesController < ApplicationController
 
 	def tagged_with
 		redirect_to root_path and return unless params[:tag]
-		@tag = params[:tag].gsub("-"," ")
+		
+		@tag = params[:tag]
 
 		tags_to_match = [@tag]
 

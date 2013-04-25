@@ -63,7 +63,7 @@ class Recipe < ActiveRecord::Base
 	      ingredient_tag = ingredient.downcase.camelize.gsub("*","")
 
 	      self.html_ingredients = html_ingredients.sub(
-	      	"*#{ingredient}*","<a href = 'tagged-with/#{ingredient_tag.downcase.gsub(" ","-")}'>#{ingredient_tag}</a>"
+	      	"*#{ingredient}*","<a href = 'tagged-with/#{ingredient_tag}'>#{ingredient_tag}</a>"
 	      	)
 
 	      ingredient_tag_array << ingredient_tag unless ingredient_tag_array.include? ingredient_tag
