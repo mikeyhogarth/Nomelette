@@ -59,11 +59,13 @@ class Recipe < ActiveRecord::Base
 		self.ingredients.scan(/\*([a-zA-Z0-9 ]+)\*/) do |ingredient_match|					  
 
 		  ingredient = ingredient_match[0]	      
+	      
 	      ingredient_tag = ingredient.downcase.camelize.gsub("*","")
+
 	      self.html_ingredients = html_ingredients.sub(
 	      	"*#{ingredient}*","<a href = 'tagged-with/#{ingredient_tag.downcase.gsub(" ","-")}'>#{ingredient_tag}</a>"
 	      	)
-	      
+
 	      ingredient_tag_array << ingredient_tag unless ingredient_tag_array.include? ingredient_tag
 
 	    end

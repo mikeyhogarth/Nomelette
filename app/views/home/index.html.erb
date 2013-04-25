@@ -9,6 +9,14 @@
 
 <img src = "http://placekitten.com/g/1000/400" />			
 
+<h2>Featured Recipes</h2>
+<% @recipes_with_images.each do |recipe_with_image| %>
+	<%= link_to recipe_with_image do %>
+		<%= image_tag recipe_with_image.image.url(:medium) %>
+		<h4><%= recipe_with_image.name %></h4>
+	<% end %>
+<% end %>
+
 <h2>Latest Recipes</h2>	
 <%= render @latest_recipes%>
 
