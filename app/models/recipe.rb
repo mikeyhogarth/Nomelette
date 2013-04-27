@@ -6,7 +6,7 @@ class Recipe < ActiveRecord::Base
 	#Friendly id gem gives nicer URL
   	friendly_id :name, use: :slugged
 
-  	attr_accessible :name, :image, :description, :ingredients, :method, :preparation_time, :cooking_time, :serves, :vegetarian, :footnote, :category_ids, :slug
+  	attr_accessible :name, :image, :description, :ingredients, :method, :preparation_time, :cooking_time, :serves, :vegetarian, :footnote, :book_id, :category_ids, :slug
 
   	has_attached_file 	:image, 
   						:styles => { :full => "500x500>", :medium => "300x300>" , :thumb => "100x100>" }, 
@@ -22,6 +22,7 @@ class Recipe < ActiveRecord::Base
 
 	#associations
 	has_and_belongs_to_many :categories
+	belongs_to :book
 	  
 	#scopes	
 	scope :latest, lambda { |num| {:order => "created_at DESC, name ASC", :limit => num} }

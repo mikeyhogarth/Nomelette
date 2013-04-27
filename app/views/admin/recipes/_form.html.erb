@@ -47,11 +47,19 @@
     <%= f.label :method %><br />
     <%= f.text_area :method, :rows => 10 %>
   </div>
+
+  <div class="field">
+    <%= f.label :book %><br />
+    <%= f.collection_select(:book_id, Book.all, :id, :title, :include_blank => true ) %>
+  </div>
+
   <div class="field">
     <%= f.label :footnote %><br />
     <%= f.text_area :footnote, :rows => 2 %>
   </div>
-  
+
+
+
   <div class="field">
     <% CategoryType.find(:all).each do |category_type| %>
 
@@ -67,8 +75,6 @@
 
     <% end %> 
   </div>
-
-
 
   <div class="actions">
     <%= f.submit %>

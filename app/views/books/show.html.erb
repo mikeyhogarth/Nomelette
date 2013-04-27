@@ -1,0 +1,10 @@
+
+<% page_title(@book.title) %>
+
+<%= render :layout => "shared/page_header" do %>
+	<h1><%= @book.title %></h1>
+<% end %>
+
+<%= content_tag :p, @book.description unless @book.description.blank? %> 
+
+<%= render(@book.recipes) || content_tag(:p, "Sorry, no recipes in this book") %>

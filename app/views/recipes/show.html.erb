@@ -29,6 +29,9 @@
 		<%= @recipe.description %>
 		<%= content_tag :span, "Suitable for vegetarians" if @recipe.vegetarian? %>
 	</p>
+	<% if(@recipe.book) %>
+		From the book <%= link_to @recipe.book.title, @recipe.book %>.
+	<% end %>
 </div>
 
 <% if @recipe.mentions_serves_or_times %>

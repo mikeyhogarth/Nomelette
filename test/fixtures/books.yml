@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+cooking_for_friends_can_be_fun:
+  title: Cooking for friends can be fun
+  description: A description
+
+festive_fayre:
+  title: Festive Fayre
+  description: Another description

@@ -1,6 +1,9 @@
 Nomelette::Application.routes.draw do
 
-  
+  get "books/show"
+
+  get "books/index"
+
   root :to => 'home#index'
 
   #named routes
@@ -16,7 +19,7 @@ Nomelette::Application.routes.draw do
   resources :recipes, :only => [:index, :show]
   resources :categories, :only => [:show, :index]
   resources :category_types, :only => [:index]
-  #resources :tags, :only => [:show]
+  resources :books, :only => [:show, :index]
 
   get "recipes/tagged-with(/:tag)" => "tags#show", :as => :tag
 
@@ -28,6 +31,7 @@ Nomelette::Application.routes.draw do
     resources :categories
     resources :category_types
     resources :users    
+    resources :books
   end
 
   #provider authentication
