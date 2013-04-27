@@ -1,6 +1,4 @@
 class Recipe < ActiveRecord::Base
-	include NomeletteHelpers
-	include TagsHelper
 	extend FriendlyId
 
 	#Friendly id gem gives nicer URL

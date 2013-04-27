@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  attr_accessible :description, :title
+  attr_accessible :title, :description
 
   has_many :recipes
 
