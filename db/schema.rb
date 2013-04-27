@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130421095010) do
+ActiveRecord::Schema.define(:version => 20130427120616) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20130421095010) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.text     "html_ingredients"
+    t.string   "preparation_time"
   end
 
   add_index "recipes", ["slug"], :name => "index_recipes_on_slug", :unique => true

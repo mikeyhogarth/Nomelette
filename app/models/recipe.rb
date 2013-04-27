@@ -6,7 +6,7 @@ class Recipe < ActiveRecord::Base
 	#Friendly id gem gives nicer URL
   	friendly_id :name, use: :slugged
 
-  	attr_accessible :name, :image, :description, :ingredients, :method, :cooking_time, :serves, :vegetarian, :footnote, :category_ids, :slug
+  	attr_accessible :name, :image, :description, :ingredients, :method, :preparation_time, :cooking_time, :serves, :vegetarian, :footnote, :category_ids, :slug
 
   	has_attached_file 	:image, 
   						:styles => { :full => "500x500>", :medium => "300x300>" , :thumb => "100x100>" }, 
@@ -32,8 +32,11 @@ class Recipe < ActiveRecord::Base
 	before_validation :tidy_up_user_input	
 
 	#public methods
-	def mentions_serves_or_cooking_time
-		return !(self.cooking_time.empty? and self.serves.empty?)
+	def mentions_serves_or_times
+		return !(
+			self.cooking_time.blank? and 
+			self.preparation_time.blank? and 
+			self.serves.blank?)
 	end
 
 	#private methods

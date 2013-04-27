@@ -31,14 +31,18 @@
 	</p>
 </div>
 
-<% if @recipe.mentions_serves_or_cooking_time %>
+<% if @recipe.mentions_serves_or_times %>
 	<dl>
-		<% if(!@recipe.serves.empty?) %>
+		<% if(!@recipe.serves.blank?) %>
 			<dt>Serves</dt><dl><%= @recipe.serves %></dl>
 		<% end %>
 
-		<% if(!@recipe.cooking_time.empty?) %>
+		<% if(!@recipe.cooking_time.blank?) %>
 			<dt>Cooking Time</dt><dl><%= @recipe.cooking_time %></dl>
+		<% end %>
+
+		<% if(!@recipe.preparation_time.blank?) %>
+			<dt>Preparation Time</dt><dl><%= @recipe.preparation_time %></dl>
 		<% end %>
 	</dl>
 <% end %> 
