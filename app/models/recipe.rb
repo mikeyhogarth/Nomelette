@@ -13,7 +13,6 @@ class Recipe < ActiveRecord::Base
   						:storage => :s3,					  						
 					    :path => ":attachment/recipes/:basename/:basename-:style.:extension"
 	
-
 	acts_as_taggable_on :ingredient_tags	
 
   	#validations
@@ -29,55 +28,12 @@ class Recipe < ActiveRecord::Base
 	scope :with_image, where("image_file_name IS NOT NULL and image_file_name <> ''").order("created_at DESC")
 	scope :popular, lambda { |num| {:limit => num} }
 
-	#callbacks
-	before_validation :tidy_up_user_input	
-
 	#public methods
 	def mentions_serves_or_times
 		return !(
 			self.cooking_time.blank? and 
 			self.preparation_time.blank? and 
 			self.serves.blank?)
-	end
-
-	#private methods
-	private
-	def tidy_up_user_input
-		self.name = name.squish.camelize
-		self.description = description.squish if description
-		self.ingredients = NomeletteHelpers::StringHelper.remove_empty_lines(ingredients)
-		self.method = NomeletteHelpers::StringHelper.remove_empty_lines(method)
-		
-		create_html_equivalent_of_ingredients!
-
-	end
-
-
-	def create_html_equivalent_of_ingredients!
-	
-		#Escape things like fractions
-		self.html_ingredients = NomeletteHelpers::StringHelper.format_ingredient(self.ingredients)
-		
-		#Lots of expensive stuff happening here, so we'll calculate it all on save and put it in the database
-		#rather than each time a recipe is rendered.
-		
-		ingredient_tag_array = Array.new
-
-		self.ingredients.scan(/\*([a-zA-Z0-9 ]+)\*/) do |ingredient_match|					  
-
-		  ingredient = ingredient_match[0]
-	      
-	      ingredient_tag = ingredient.gsub("*","").titleize
-
-	      self.html_ingredients = html_ingredients.sub("*#{ingredient}*",
-	      	"<a href = '#{Rails.application.routes.url_helpers.tag_path(ingredient_tag.parameterize)}'>#{ingredient_tag}</a>")
-
-	      ingredient_tag_array << ingredient_tag unless ingredient_tag_array.include? ingredient_tag
-
-	    end
-
-	    self.ingredient_tag_list = ingredient_tag_array.join(", ") 
-
 	end
 
 end
