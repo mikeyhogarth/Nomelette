@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
 	include NomeletteHelpers
+	include TagsHelper
 	extend FriendlyId
 
 	#Friendly id gem gives nicer URL
@@ -42,7 +43,9 @@ class Recipe < ActiveRecord::Base
 		self.description = description.squish if description
 		self.ingredients = NomeletteHelpers::StringHelper.remove_empty_lines(ingredients)
 		self.method = NomeletteHelpers::StringHelper.remove_empty_lines(method)
+		
 		create_html_equivalent_of_ingredients!
+
 	end
 
 
@@ -58,12 +61,13 @@ class Recipe < ActiveRecord::Base
 
 		self.ingredients.scan(/\*([a-zA-Z0-9 ]+)\*/) do |ingredient_match|					  
 
-		  ingredient = ingredient_match[0]	      
-	      ingredient_tag = ingredient.downcase.camelize.gsub("*","")
-	      self.html_ingredients = html_ingredients.sub(
-	      	"*#{ingredient}*","<a href = 'tagged-with/#{ingredient_tag.downcase.gsub(" ","-")}'>#{ingredient_tag}</a>"
-	      	)
+		  ingredient = ingredient_match[0]
 	      
+	      ingredient_tag = ingredient.gsub("*","").titleize
+
+	      self.html_ingredients = html_ingredients.sub("*#{ingredient}*",
+	      	"<a href = '#{Rails.application.routes.url_helpers.tag_path(ingredient_tag.parameterize)}'>#{ingredient_tag}</a>")
+
 	      ingredient_tag_array << ingredient_tag unless ingredient_tag_array.include? ingredient_tag
 
 	    end

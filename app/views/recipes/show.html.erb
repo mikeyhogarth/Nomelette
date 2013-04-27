@@ -11,13 +11,12 @@
 		<% if(current_user and current_user.admin?) %>
 			<small>(<%= link_to "Edit", edit_admin_recipe_path(@recipe)%>)</small>
 		<% end %>
-
 	</h1>
 <% end %>
 
 <p>
 	<% @recipe.ingredient_tag_list.each do |tag| %>
-		<%= link_to tag, tagged_with_url(:tag => tag), :class => "round label" %>
+		<%= link_to tag, tag_path(tag.parameterize), :class => "round label" %>
 	<% end %>
 
 	<% @recipe.categories.each do |category| %>
