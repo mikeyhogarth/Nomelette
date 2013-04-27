@@ -10,6 +10,7 @@ require "bundler/capistrano"
 # General
 set :application, "nomelette"
 set :user, "mikey"
+set :keep_releases, 3
 
 set :deploy_to, "/home/#{user}/#{application}"
 #set :deploy_via, :copy
@@ -60,6 +61,6 @@ namespace :custom do
 
 end
 
-
+after "deploy:update", "deploy:cleanup" 
 after "deploy:assets:symlink", "custom:symlinks"
 after "deploy", "custom:refresh_sitemaps"
