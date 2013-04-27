@@ -13,7 +13,7 @@ class RecipeTest < ActiveSupport::TestCase
 
 		recipe.save
 
-		html_escaped_ingredients = "2oz <a href = 'tagged-with/curry-powder'>Curry powder</a>\n2oz <a href = 'tagged-with/butter'>Butter</a>\n1lb <a href = 'tagged-with/onions'>Onions</a>, Chopped\n&frac12; Teaspoon <a href = 'tagged-with/sugar'>Sugar</a>\n1 &frac12; lbs Trimmed and Washed <a href = 'tagged-with/broccoli'>Broccoli</a>\n"
+		html_escaped_ingredients = "2oz <a href = '/recipes/tagged-with/curry-powder'>Curry Powder</a>\n2oz <a href = '/recipes/tagged-with/butter'>Butter</a>\n1lb <a href = '/recipes/tagged-with/onions'>Onions</a>, Chopped\n&frac12; Teaspoon <a href = '/recipes/tagged-with/sugar'>Sugar</a>\n1 &frac12; lbs Trimmed and Washed <a href = '/recipes/tagged-with/broccoli'>Broccoli</a>\n"
 
 		assert_equal html_escaped_ingredients, recipe.html_ingredients
 
