@@ -26,7 +26,7 @@ class Recipe < ActiveRecord::Base
 	  
 	#scopes	
 	scope :latest, lambda { |num| {:order => "created_at DESC, name ASC", :limit => num} }
-	scope :with_image, where("image_file_name IS NOT NULL and image_file_name <> ''")
+	scope :with_image, where("image_file_name IS NOT NULL and image_file_name <> ''").order("created_at DESC")
 	scope :popular, lambda { |num| {:limit => num} }
 
 	#callbacks

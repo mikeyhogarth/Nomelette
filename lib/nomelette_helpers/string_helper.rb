@@ -5,7 +5,7 @@ module NomeletteHelpers
   	class << self
   		def remove_empty_lines(string_with_empty_lines)
 
-        return string_with_empty_lines.squish if(string_with_empty_lines.lines.count == 1)          
+        return string_with_empty_lines.squish if(string_with_empty_lines and string_with_empty_lines.lines.count == 1)          
 
 		  	string_with_lines_removed = String.new
 
