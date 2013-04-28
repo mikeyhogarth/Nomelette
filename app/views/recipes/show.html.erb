@@ -74,5 +74,5 @@
 		<% end %> 
 	</ol>
 
-	<%= content_tag :aside, @recipe.footnote.html_safe if @recipe.footnote.blank? %>
+	<%= content_tag :aside, @recipe.footnote.html_safe unless @recipe.footnote.blank? %>
 </div>
