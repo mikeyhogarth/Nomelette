@@ -9,7 +9,7 @@ module ApplicationHelper
 
   def page_description(description)
     content_for :description do
-        description
+        strip_tags(description).squish
       end
   end
 
