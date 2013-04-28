@@ -19,8 +19,8 @@
     <%= yield (:facebook_og_metas) if content_for?(:facebook_og_metas) %>
 
   	<%= stylesheet_link_tag    "application" %>
-  	<%= javascript_include_tag "application_header" %>
-    <%= javascript_include_tag "ckeditor_includes" if current_user and current_user.admin? %>
+  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= javascript_include_tag "ckeditor/init" if @current_user and @current_user.admin? %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -35,7 +35,7 @@
     
     <%= render "shared/footer" %>
     
-    <%= javascript_include_tag "application_footer" %>
+    <%= javascript_include_tag "application" %>
     <%= render "shared/tracking_codes" %>
   </body>
 </html>
