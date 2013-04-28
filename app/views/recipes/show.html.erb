@@ -32,7 +32,7 @@
 			<%= content_tag :span, "Suitable for vegetarians" if @recipe.vegetarian? %>
 		</p>
 		<% if(@recipe.book) %>
-			From the book <%= link_to @recipe.book.title, @recipe.book %>.
+			<p>From the book <%= link_to @recipe.book.title, @recipe.book %>.</p>
 		<% end %>
 	</div>
 
