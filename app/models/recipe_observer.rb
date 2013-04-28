@@ -28,14 +28,11 @@ class RecipeObserver < ActiveRecord::Observer
 
 		recipe.ingredients.scan(/\*([a-zA-Z0-9 ]+)\*/) do |ingredient_match|					  
 
-		  ingredient = ingredient_match[0].titleize
-		  	      
+		  ingredient = ingredient_match[0]
+		  titleized_ingredient = ingredient.titleize	  	      
 	      link_to_tag = Rails.application.routes.url_helpers.tag_path(ingredient.parameterize)
-
-		  recipe.html_ingredients = recipe.html_ingredients.sub("*#{ingredient}*",
-	      	"<a href = '#{link_to_tag}'><span itemprop='name'>#{ingredient}</span></a>")
-
-	      ingredient_tag_array << ingredient unless ingredient_tag_array.include? ingredient
+		  recipe.html_ingredients = recipe.html_ingredients.sub("*#{ingredient}*", "<a href = '#{link_to_tag}'><span itemprop='name'>#{titleized_ingredient}</span></a>")
+	      ingredient_tag_array << titleized_ingredient unless ingredient_tag_array.include? titleized_ingredient
 
 	    end
 
