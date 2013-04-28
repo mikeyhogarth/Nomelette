@@ -1,9 +1,5 @@
 Nomelette::Application.routes.draw do
 
-  get "books/show"
-
-  get "books/index"
-
   root :to => 'home#index'
 
   #named routes
@@ -36,6 +32,8 @@ Nomelette::Application.routes.draw do
 
   #provider authentication
   match "/auth/:provider/callback" => "sessions#create"
+
+  mount Ckeditor::Engine => '/ckeditor'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

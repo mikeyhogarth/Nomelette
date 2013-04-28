@@ -39,6 +39,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'debugger'
 
 gem 'friendly_id', '~> 4.0.9'
+gem "ckeditor"
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
 gem 'sitemap_generator'
