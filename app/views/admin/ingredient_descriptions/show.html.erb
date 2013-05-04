@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tag:</b>
+  <%= @ingredient_description.tag_id %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @ingredient_description.text %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_ingredient_description_path(@ingredient_description) %> |
+<%= link_to 'Back', admin_ingredient_descriptions_path %>

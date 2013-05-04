@@ -4,5 +4,8 @@ class TagsController < ApplicationController
 	
 	@tag = params[:tag].titleize
 	@recipes = Recipe.tagged_with([@tag.singularize, @tag.pluralize], :any => true)
+	tag = @recipes.first.ingredient_tags.where("lower(name) = ?", @tag.singularize.downcase).first
+	@ingredient_description = IngredientDescription.find_by_tag_id(tag.id).text
+
   end
 end

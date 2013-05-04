@@ -1,8 +1,15 @@
-class RecipeObserver < ActiveRecord::Observer
+require 'action_view'
+
+class RecipeObserver < ActiveRecord::Observer	
+	include ActionView::Helpers::SanitizeHelper
 
 	def before_validation(recipe)
 		tidy_up_user_input_for(recipe)		
 		create_html_and_tags_for(recipe)
+	end
+
+	def after_save(recipe)
+		put_in_wikipedia_descriptions_for_tags_for(recipe)
 	end
 
 	#private methods
@@ -32,13 +39,31 @@ class RecipeObserver < ActiveRecord::Observer
 		  titleized_ingredient = ingredient.titleize	  	      
 	      link_to_tag = Rails.application.routes.url_helpers.tag_path(ingredient.parameterize)
 		  recipe.html_ingredients = recipe.html_ingredients.sub("*#{ingredient}*", "<a href = '#{link_to_tag}'><span itemprop='name'>#{titleized_ingredient}</span></a>")
-	      ingredient_tag_array << titleized_ingredient unless ingredient_tag_array.include? titleized_ingredient
+	      ingredient_tag_array << titleized_ingredient unless ingredient_tag_array.include? titleized_ingredient	      
 
 	    end
 
 	    recipe.ingredient_tag_list = ingredient_tag_array.join(", ") 
 
+		
 	end
 
+	def put_in_wikipedia_descriptions_for_tags_for(recipe)
+		
+		wikipedia_client = ThirdParty::Wikipedia.new
+
+		recipe.ingredient_tags.each do |ingredient_tag|
+			
+			next unless(IngredientDescription.find_by_tag_id(ingredient_tag.id).nil?)
+
+			brief_description_of_ingredient = strip_tags(wikipedia_client.get_description_for(ingredient_tag.name))
+
+			next if brief_description_of_ingredient and brief_description_of_ingredient.include?("may refer to")
+			
+			IngredientDescription.new(:tag_id => ingredient_tag.id, :name => ingredient_tag.name.singularize, :text => brief_description_of_ingredient).save
+
+		end
+
+	end
 
 end

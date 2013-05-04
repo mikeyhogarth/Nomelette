@@ -28,6 +28,7 @@ Nomelette::Application.routes.draw do
     resources :category_types
     resources :users    
     resources :books
+    resources :ingredient_descriptions
   end
 
   #provider authentication

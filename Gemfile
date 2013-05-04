@@ -47,3 +47,5 @@ gem 'acts-as-taggable-on'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
+
+gem 'httparty'
