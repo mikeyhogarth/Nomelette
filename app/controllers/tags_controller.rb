@@ -8,8 +8,10 @@ class TagsController < ApplicationController
 
 	tag = @recipes.first.ingredient_tags.where("lower(name) = ?", @tag.singularize.downcase).first
 
-	if(tag)
-		@ingredient_description = IngredientDescription.find_by_tag_id(tag.id).text
+	if(tag)		
+		ingredient_description = IngredientDescription.find_by_tag_id(tag.id)
+
+		@ingredient_description = ingredient_description.text if ingredient_description
 	end
 
   end
