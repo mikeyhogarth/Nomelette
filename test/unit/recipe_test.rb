@@ -33,5 +33,24 @@ class RecipeTest < ActiveSupport::TestCase
 
 	end
 
+	test "should_get_tag_description_and_after_saving" do
+
+		recipe = Recipe.create(
+			:name => "A recipe with water cress in it",
+			:ingredients => "*water cress*", 
+			:method => "Do stuff to the water cress")
+
+		cress_tag = recipe.ingredient_tags.first
+
+		assert(cress_tag.present?)
+
+		assert(cress_tag.name == "Water Cress")
+
+		cress_tag_description = IngredientDescription.where(:tag_id => cress_tag.id)
+
+		assert(cress_tag_description.present?)
+
+	end
+
 
 end

@@ -43,9 +43,8 @@ class RecipeObserver < ActiveRecord::Observer
 
 	    end
 
-	    recipe.ingredient_tag_list = ingredient_tag_array.join(", ") 
-
-		
+	    recipe.ingredient_tag_list = ingredient_tag_array.join(", ") unless(ingredient_tag_array.empty?)
+	    		
 	end
 
 	def put_in_wikipedia_descriptions_for_tags_for(recipe)

@@ -18,7 +18,7 @@
 	<p>By <span itemprop="author">Sheila Hogarth</span></p>
 	<p>
 		<% @recipe.ingredient_tag_list.each do |tag| %>
-			<%= link_to tag, tag_path(tag.parameterize), :class => "round label" %>
+			<%= link_to tag.titleize, tag_path(tag.parameterize), :class => "round label" %>
 		<% end %>
 
 		<% @recipe.categories.each do |category| %>

@@ -6,8 +6,6 @@ class Admin::IngredientDescriptionsController < ApplicationController
   # GET /admin/ingredient_descriptions.json
   def index
     @ingredient_descriptions = IngredientDescription.find(:all)
-    puts "FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
-    puts @ingredient_descriptions
   end
 
 
@@ -49,13 +47,12 @@ class Admin::IngredientDescriptionsController < ApplicationController
   def update
     @ingredient_description = IngredientDescription.find(params[:id])
 
-    respond_to do |format|
-      if @ingredient_description.update_attributes(params[:ingredient_description])
-        redirect_to [:admin,@ingredient_description], notice: 'Ingredient description was successfully updated.'         
-      else
-        render action: "edit"         
-      end
+    if @ingredient_description.update_attributes(params[:ingredient_description])
+      redirect_to [:admin,@ingredient_description], notice: 'Ingredient description was successfully updated.'         
+    else
+      render action: "edit"         
     end
+    
   end
 
   # DELETE /admin/ingredient_descriptions/1
