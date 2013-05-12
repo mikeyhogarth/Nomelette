@@ -1,0 +1,18 @@
+<% if facebook_session_token %>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# nomelette: http://ogp.me/ns/fb/nomelette#">
+<% else %>
+  <head>
+<% end %> 
+  
+   	<title>Nomelette <%= content_for?(:title) ? "&raquo; #{ yield(:title) }".html_safe  : "" %></title>
+    <meta name='description' content='<%= content_for?(:description) ? yield(:description).html_safe : "The recipes of Sheila Hogarth" %>' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+
+    <%= yield (:facebook_og_metas) if content_for?(:facebook_og_metas) %>
+
+  	<%= stylesheet_link_tag    "application" %>
+  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= javascript_include_tag "ckeditor/init" if @current_user and @current_user.admin? %>
+    <%= csrf_meta_tags %>
+  </head>

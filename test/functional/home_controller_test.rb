@@ -11,9 +11,4 @@ class HomeControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get contact page" do
-    get :contact
-    assert_response :success
-  end
-
 end

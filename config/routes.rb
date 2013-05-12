@@ -4,7 +4,6 @@ Nomelette::Application.routes.draw do
 
   #named routes
   match "about" => 'home#about'   , :as => :about
-  match "contact" => 'home#contact' , :as => :contact
   match 'login' => 'sessions#new', :as => :login
   match 'admin/login' => 'sessions#new_admin', :as => :admin_login
   match 'logout' => 'sessions#destroy', :as => :logout
@@ -13,9 +12,9 @@ Nomelette::Application.routes.draw do
   #public REST routes
 
   resources :recipes, :only => [:index, :show]
-  resources :categories, :only => [:show, :index]
-  resources :category_types, :only => [:index]
   resources :books, :only => [:show, :index]
+  resources :categories, :only => [:show]
+  resources :category_types, :only => [:index]
 
   get "recipes/tagged-with(/:tag)" => "tags#show", :as => :tag
 
@@ -33,7 +32,6 @@ Nomelette::Application.routes.draw do
 
   #provider authentication
   match "/auth/:provider/callback" => "sessions#create"
-
   mount Ckeditor::Engine => '/ckeditor'
 
   # The priority is based upon order of creation:

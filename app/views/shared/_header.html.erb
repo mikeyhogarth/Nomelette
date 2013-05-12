@@ -1,0 +1,33 @@
+<header class="site-header main-area">
+    <div class="wrapper">
+        <div class="grid">
+             <div class="grid__item one-half palm-one-whole">
+			
+				<%= link_to root_url, :title => "Nomelette" do %>
+					<%= image_tag "logos/nomelette-logo.png", :alt => 'Nomelette - The Recipes of Sheila Hogarth', :title => 'Nomelette - The Recipes of Sheila Hogarth' %></a>
+				<% end %>
+			
+             </div><!-- .one-half --><!-- 
+         --><div class="grid__item one-half palm-one-whole">
+                <div class="grid">
+                    <div class="grid__item one-whole">
+                        <ul class="nav social-icons">
+						  <li><%= link_to("#") { image_tag "icons/twitter.png", :alt => "Follow us on Twitter", :title => "Follow us on Twitter" } %></li>
+						  <li><%= link_to("#") { image_tag "icons/facebook.png", :alt => "Like us on Facebook", :title => "Like us on Facebook" } %></li>
+						  <li><%= link_to("#") { image_tag "icons/pinterest.png", :alt => "Follow our boards on Pinterest", :title => "Follow our boards on Pinterest" } %></li>
+						  <li><%= link_to("#") { image_tag "icons/youtube.png", :alt => "Watch us on YouTube", :title => "Watch us on YouTube" } %></li>												
+                        </ul>
+                    </div><!-- .one-whole --><!-- 
+                    --><div class="grid__item one-whole">
+					<%# 
+					  <!-- coming soon -->
+                      <form id="search">
+                        <input type="search"><input type="submit" value="search">
+                      </form>
+					%>
+                    </div><!-- .one-whole -->
+                </div><!-- .grid -->
+             </div><!-- .one-half -->
+        </div><!-- .grid -->
+    </div><!-- .wrapper -->
+</header>

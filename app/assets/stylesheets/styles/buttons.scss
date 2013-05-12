@@ -1,0 +1,38 @@
+.btn--1 {
+	background-color: $brand-color;
+}
+.btn--1 {
+	background-color: $brand-color;
+	color: #fff;
+	@extend .btn;
+}
+.btn--2 {
+	background-color: $brand-color-2;
+	@extend .btn;
+	color: #fff;
+}
+.btn--3 {
+	background-color: $base-ui-color;
+	@extend .btn;
+	color: #fff;
+}
+
+.pill {
+	padding-right: .75em;
+	padding-left: .75em;
+	margin-bottom: 5px;
+	background-color: tint($brand-color, 40%);
+	border-style: solid;
+	border-width: 1px;
+	border-color: tint($brand-color, 10%);
+	@include single-text-shadow(0px,1px, 1px, false, shade($brand-color, 20%));
+	@include transition-property(background-color, border-color);
+	@include transition-duration(0.3s);
+	&:hover {
+		background-color: $brand-color;
+		border-color: shade($brand-color, 20%);
+		@include single-text-shadow(0px,1px, 1px, false, shade($brand-color, 40%));
+		color: #fff;
+		text-decoration: none;
+	}
+}

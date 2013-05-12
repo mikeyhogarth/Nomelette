@@ -12,7 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
 //= require recipes
-
-$(document).foundation();
+//= require jquery.carouFredSel-6.2.1

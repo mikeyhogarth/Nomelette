@@ -6,5 +6,6 @@ class BooksController < ApplicationController
 
 	def show
 		@book = Book.find(params[:id], :include => :recipes)
+		@books = Book.find(:all)
 	end
 end

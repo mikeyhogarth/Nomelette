@@ -1,16 +1,12 @@
-<%= render :layout => "shared/page_header" do %>
-	<h1>
-		<%= @tag %>.
-	</h1>
-<% end %>
+<h1><%= @tag %>.</h1>
 
 <% if @ingredient_description %>
 	<blockquote>
 		<%= @ingredient_description %>
 		<small>Source: <a href = "http://www.wikipedia.org">Wikipedia</a></small>
 	</blockquote>
-
 <% end %>
 
 <p>Recipes that use <%= @tag %>;</p>
+
 <%= render @recipes %>

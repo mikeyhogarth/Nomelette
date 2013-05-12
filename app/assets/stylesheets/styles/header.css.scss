@@ -1,0 +1,14 @@
+.site-header {
+	background: transparent url(backgrounds/header-bg.png) left bottom repeat-x;
+	border-top: 1px solid #00d2d1;
+	position: relative;
+	z-index: 10;
+	padding-bottom: 30px;
+	padding-top: 25px;
+	.social-icons {
+		float: right;
+	}
+	#search {
+		float: right;
+	}
+}

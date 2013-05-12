@@ -18,7 +18,7 @@ module NomeletteHelpers
 
 
       def format_ingredient(ingredient)    
-      #escape any fractions to html codes and clear asterisks
+          #escape any fractions to html codes and clear asterisks
           #snippet inspired by http://snippets.dzone.com/posts/show/2323
           ingredient.gsub(/\d\/\d/) do |match|
             case match

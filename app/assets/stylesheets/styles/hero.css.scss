@@ -1,0 +1,21 @@
+.hero {
+	background: url(backgrounds/hero-placeholder.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	-moz-background-size: cover;
+     -webkit-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover;
+	margin-top: -20px;
+	margin-bottom: 15px;
+	.hero__intro {
+		background: rgba(255,255,255, 0.8);
+		margin: 50px 0;
+		h1 {
+			background: none;
+			color: #333;
+			margin-top: 0;
+			padding-bottom: 0;
+		}
+	}
+}

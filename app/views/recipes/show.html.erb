@@ -5,74 +5,121 @@
 	<%= render "facebook_og_metas" %>
 <%end%>
 
-<div itemscope itemtype="http://data-vocabulary.org/Recipe" >
+<div class="main-area">
+	<div class="wrapper">
+		<div itemscope itemtype="http://data-vocabulary.org/Recipe" >
+			<div class="grid">
+				<div class="grid__item one-whole">
 
-	<%= render :layout => "shared/page_header" do %>
-		<h1 itemprop="name"><%= @recipe.name %>
+					<h1 itemprop="name"><%= @recipe.name %><%= content_tag :span, " (v)" if @recipe.vegetarian? %></h1>
 
-			<% if(current_user and current_user.admin?) %>
-				<small>(<%= link_to "Edit", edit_admin_recipe_path(@recipe)%>)</small>
-			<% end %>
-		</h1>
-	<% end %>
-	<p>By <span itemprop="author">Sheila Hogarth</span></p>
-	<p>
-		<% @recipe.ingredient_tag_list.each do |tag| %>
-			<%= link_to tag.titleize, tag_path(tag.parameterize), :class => "round label" %>
-		<% end %>
+					<% if(current_user and current_user.admin?) %>
+							<span><%= link_to "Edit", edit_admin_recipe_path(@recipe), :class => "edit-recipe btn--3"%></span>
+						<% end %>
 
-		<% @recipe.categories.each do |category| %>
-			<%= link_to category.name, category, :class => "round label", :itemprop => "recipeType" %>
-		<% end %>
-	</p>
+					<p class="recipe-meta">
+						By <span itemprop="author">Sheila Hogarth</span>.
+						<% if(@recipe.book) %>
+							<span> From the book <%= link_to @recipe.book.title, @recipe.book %>.</span>
+						<% end %>
+					</p>
+					
+					<div itemprop="summary" class="lead">
+							<%= @recipe.description.html_safe unless @recipe.description.blank? %>
+							<%= content_tag :span, "Suitable for vegetarians" if @recipe.vegetarian? %>
+						</div>	
+				</div><!-- 
 
-	<div>
-		<p itemprop="summary">
-			<%= @recipe.description.html_safe unless @recipe.description.blank? %>
-			<%= content_tag :span, "Suitable for vegetarians" if @recipe.vegetarian? %>
-		</p>
-		<% if(@recipe.book) %>
-			<p>From the book <%= link_to @recipe.book.title, @recipe.book %>.</p>
-		<% end %>
+				--><div class="grid__item ten-twelfths portable-one-whole">
+						<div class="grid grid--rev">
+							<div class="grid__item two-fifths palm-one-whole">
+								<div class="recipe__ingredients">
+									<h2>Ingredients</h2>
+										<ul>
+											<% @recipe.html_ingredients.each_line do |ingredient| %>
+												<li itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><%= raw ingredient %></li>
+											<% end %>
+										</ul>
+								</div>	
+							</div><!-- 
+
+						--><div class="grid__item three-fifths palm-one-whole">
+							<% if @recipe.image.exists? %>
+								<%= image_tag @recipe.image.url(:full), :itemprop => "photo" %>
+							<% else %>
+								<%= image_tag "content/no-img.jpg"  %>
+							<% end %>
+							</div>
+						</div>
+						<div class="grid">
+							<div class="grid__item one-whole">
+								<div class="recipe__method">
+									<h2>Method</h2>
+									<ol itemprop="instructions">
+										<% @recipe.method.each_line do |method| %>
+											<li><%= method %></li>
+										<% end %> 
+									</ol>
+
+									<%= content_tag :aside, @recipe.footnote.html_safe, :class => "footnote islet" unless @recipe.footnote.blank? %>
+								</div>
+								<ul class="nav">
+
+									<% @recipe.ingredient_tag_list.each do |tag| %>
+										<li><%= link_to tag.titleize, tag_path(tag.parameterize), :class => "pill" %></li>
+									<% end %>
+
+									<% @recipe.categories.each do |category| %>
+										<li><%= link_to category.name, category, :class => "pill", :itemprop => "recipeType" %></li>
+									<% end %>
+								</ul>
+							</div>
+						</div>
+				</div><!-- 
+
+				--><div class="grid__item two-twelfths portable-one-whole">
+					<% if @recipe.mentions_serves_or_times %>
+						<dl>
+							<% unless @recipe.serves.blank? %>
+								<dt>Serves</dt><dd itemprop = "yield"><%= @recipe.serves %></dd>
+							<% end %>
+
+							<% unless @recipe.cooking_time.blank? %>
+								<dt>Cooking Time</dt><dd><time itemprop="cookTime"><%= @recipe.cooking_time %></time></dd>
+							<% end %>
+
+							<% unless @recipe.preparation_time.blank? %>
+								<dt>Preparation Time</dt><dd><time itemprop="prepTime"><%= @recipe.preparation_time %></time></dd>
+							<% end %>
+						</dl>
+					<% end %> 
+							<!-- AddThis Button BEGIN -->
+							<div class="addthis_toolbox addthis_default_style">
+							<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+							<a class="addthis_button_tweet"></a>
+							<a class="addthis_button_pinterest_pinit"></a>
+							<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+							<a class="addthis_counter addthis_pill_style"></a>
+							</div>
+							<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
+							<!-- AddThis Button END -->
+				</div>
+					
+
+					
+					
+
+					
+
+					
+
+
+					
+
+					
+
+					
+			</div>
+		</div>
 	</div>
-
-	<% if @recipe.mentions_serves_or_times %>
-		<dl>
-			<% if(!@recipe.serves.blank?) %>
-				<dt>Serves</dt><dd itemprop = "yield"><%= @recipe.serves %></dd>
-			<% end %>
-
-			<% if(!@recipe.cooking_time.blank?) %>
-				<dt>Cooking Time</dt><dd><time itemprop="cookTime"><%= @recipe.cooking_time %></time></dd>
-			<% end %>
-
-			<% if(!@recipe.preparation_time.blank?) %>
-				<dt>Preparation Time</dt><dd><time itemprop="prepTime"><%= @recipe.preparation_time %></time></dd>
-			<% end %>
-		</dl>
-	<% end %> 
-
-
-	<% if @recipe.image.exists? %>
-		<%= image_tag @recipe.image.url(:full), :itemprop => "photo" %>
-	<% else %>
-		<%= image_tag "no-img.jpg"  %>
-	<% end %>
-
-	<h2>Ingredients</h2>
-	<ul>
-		<% @recipe.html_ingredients.each_line do |ingredient| %>
-			<li itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><%= raw ingredient %></li>
-		<% end %>
-	</ul>
-
-	<h2>Method</h2>
-
-	<ol itemprop="instructions">
-		<% @recipe.method.each_line do |method| %>
-			<li><%= method %></li>
-		<% end %> 
-	</ol>
-
-	<%= content_tag :aside, @recipe.footnote.html_safe unless @recipe.footnote.blank? %>
-</div>
+</div>		

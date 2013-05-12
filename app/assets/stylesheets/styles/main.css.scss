@@ -1,0 +1,45 @@
+/**
+ * Reversed grids
+ */
+.grid--rev{
+    @extend .grid;
+    direction:rtl;
+    text-align:right;
+
+    > .grid__item{
+        direction:ltr;
+        text-align:left;
+    }
+}
+body {
+	background: #f0f0f0 url(backgrounds/grey-bg-texture.jpg) left top repeat;
+}
+.wrapper {
+	max-width: 1170px;
+	margin: 0 auto;
+}
+.main-area {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.island,
+.islet,
+.mini-islet {
+	background-color: #fff;
+	@include border-radius($brand-round, $brand-round);
+}
+.islet.footnote {
+	background-color: #e5e5e5;
+	color: #727272;
+	padding-left: 55px;
+	//border: 1px solid shade(#e5e5e5, 5%);
+}
+.mini-islet {
+	display: block;
+	@extend .cf;
+	padding: 6px;
+	> :last-child{
+        margin-bottom:0;
+    }
+}
+

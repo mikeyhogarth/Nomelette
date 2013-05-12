@@ -1,0 +1,46 @@
+@mixin serif {
+	font-family: 'Bree Serif', 'Georgia', serif;
+	font-weight: normal;
+}
+@mixin bold-text {
+	font-weight: 700;
+}
+body {
+	color: #333;
+}
+h1, h2, h3, h4, h5, h6, .alpha, .beta, .gamma, .delta, .epsilon, .kilo, .giga, .mega {
+	@include serif;
+}
+b, strong {
+	@include bold-text;
+}
+h1 {
+	background: url(backgrounds/grey-dot-border.png) left bottom repeat-x;
+	color: shade($brand-color, 10%);
+	margin-top: .2em;
+	padding-bottom: .5em;
+}
+h2 {
+	color: $brand-color-2;
+}
+.center-heading {
+	text-align: center;
+	background: url(backgrounds/grey-dot-border.png) left 60% repeat-x;
+	span {
+		background: #f0f0f0 url(backgrounds/grey-bg-texture.jpg) left top repeat;
+		padding: 0 .25em;
+	}
+}
+ol, ul {
+	margin-left: 20px;
+}
+a {
+	color: $brand-color-2;
+	text-decoration: none; 
+	@include transition-property(color, text-decoration);
+	@include transition-duration(0.3s);
+	&:hover {
+		color: #d72e23;
+		text-decoration: underline;
+	}
+}

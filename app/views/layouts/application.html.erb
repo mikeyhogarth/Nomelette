@@ -5,37 +5,82 @@
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 
-<% if facebook_session_token %>
-  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# nomelette: http://ogp.me/ns/fb/nomelette#">
-<% else %>
-  <head>
-<% end %> 
-  
-   	<title>Nomelette <%= content_for?(:title) ? "&raquo; #{ yield(:title) }".html_safe  : "" %></title>
-    <meta name='description' content='<%= content_for?(:description) ? yield(:description).html_safe : "The recipes of Sheila Hogarth" %>' />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-
-    <%= yield (:facebook_og_metas) if content_for?(:facebook_og_metas) %>
-
-  	<%= stylesheet_link_tag    "application" %>
-  	<%= javascript_include_tag "vendor/custom.modernizr" %>
-    <%= javascript_include_tag "ckeditor/init" if @current_user and @current_user.admin? %>
-    <%= csrf_meta_tags %>
-  </head>
+  <%= render "layouts/head" %>
 
   <body>
     <%= render "shared/facebook_javascript" %>
     <%= render "shared/navigation" %>    
-
-    <div class = "row">
-        <%= render "shared/flash_notices" %>
-        <%= yield %>
-    </div>
+	<%= render "shared/header" %>
+    <%= render "shared/flash_notices" %>
+	
+    <%= yield %>
     
-    <%= render "shared/footer" %>
-    
+    <%= render "shared/footer" %>    
     <%= javascript_include_tag "application" %>
     <%= render "shared/tracking_codes" %>
+
+
+<script type="text/javascript">
+$(window).load(function(){
+
+
+function imageCarousel() {
+
+  var carousel =  $('#carousel');
+
+  var width = $(window).width();
+  if(width <=480) {
+     var maxNum = 1
+  }
+else {
+  var maxNum = 5
+}
+    
+
+    carousel.carouFredSel({
+    auto: true,
+    responsive: true,
+    height : 'auto',
+    scroll: {
+      items : 1,
+      pauseOnHover : true
+    },
+     swipe: {
+        onTouch: true,
+        items: 3
+    },
+    items : {
+      visible     : {
+        min    : 1,
+        max    : maxNum
+      },
+      width       : 200
+    },
+    onCreate : function () {
+          carousel.parent().add(carousel).css('height', carousel.children().first().height() + 30 + 'px');
+        }
+
+  });
+
+    
+
+   $("#prev").on("click", function(){
+    $("#carousel").trigger("prev");
+  });
+  $("#next").on("click", function(){
+    $("#carousel").trigger("next");
+  });
+
+};
+
+  var resizeTimer;
+
+  $(window).resize(function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(imageCarousel, 1);
+  }).resize();
+
+});
+</script>
   </body>
 </html>
