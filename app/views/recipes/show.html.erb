@@ -45,7 +45,7 @@
 
 						--><div class="grid__item three-fifths palm-one-whole">
 							<% if @recipe.image.exists? %>
-								<%= image_tag @recipe.image.url(:full), :itemprop => "photo" %>
+								<%= image_tag @recipe.image.url(:full), :itemprop => "photo", :class => "border-1" %>
 							<% else %>
 								<%= image_tag "content/no-img.jpg"  %>
 							<% end %>
@@ -61,7 +61,7 @@
 										<% end %> 
 									</ol>
 
-									<%= content_tag :aside, @recipe.footnote.html_safe, :class => "footnote islet" unless @recipe.footnote.blank? %>
+									<%= content_tag :aside, @recipe.footnote.html_safe, :class => "grey footnote islet" unless @recipe.footnote.blank? %>
 								</div>
 								<ul class="nav">
 
@@ -79,7 +79,7 @@
 
 				--><div class="grid__item two-twelfths portable-one-whole">
 					<% if @recipe.mentions_serves_or_times %>
-						<dl>
+						<dl class="recipe-info islet grey">
 							<% unless @recipe.serves.blank? %>
 								<dt>Serves</dt><dd itemprop = "yield"><%= @recipe.serves %></dd>
 							<% end %>
@@ -103,6 +103,10 @@
 							</div>
 							<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
 							<!-- AddThis Button END -->
+				</div><!-- 
+
+				--><div class="grid__item one-whole">
+					<h3 class="center-heading"><span>Try these related recipes</span></h3>
 				</div>
 					
 

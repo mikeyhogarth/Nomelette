@@ -21,30 +21,30 @@
 	      <div class="grid">
 	        <div class="grid__item one-whole">
 	          <h2 class="center-heading"><span>Featured Recipes</span></h2>
-	         
-	          <section class="carousel-container">
+	        
+		           <section class="carousel-container">
 		          <div id="carousel">
-			          <article class="feat-recipe islet">
+			          <article class="feat-recipe islet--white">
 			          	<img src="http://placekitten.com/500/411">
 			          	<p>Name of Recipe</p>
 			          </article>
-			          <article class="feat-recipe islet">
+			          <article class="feat-recipe islet--white">
 			          	<img src="http://placekitten.com/500/411">
 			          	<p>Name of Recipe</p>
 			          </article>
-			          <article class="feat-recipe islet">
+			          <article class="feat-recipe islet--white">
 			          	<img src="http://placekitten.com/500/411">
 			          	<p>Name of Recipe</p>
 			          </article>
-			          <article class="feat-recipe islet">
+			          <article class="feat-recipe islet--white">
 			          	<img src="http://placekitten.com/500/411">
 			          	<p>Name of Recipe</p>
 			          </article>
-			          <article class="feat-recipe islet">
+			          <article class="feat-recipe islet--white">
 			          	<img src="http://placekitten.com/500/411">
 			          	<p>Name of Recipe</p>
 			          </article>
-			           <article class="feat-recipe islet">
+			           <article class="feat-recipe islet--white">
 			          	<img src="http://placekitten.com/500/411">
 			          	<p>Name of Recipe</p>
 			          </article>
@@ -53,31 +53,45 @@
 				<a id="next" title="Next"><%= image_tag "content/next.png", :alt => 'Next', :title => 'Next' %></a>
 		  	</section>
 
-		      	
-			 <% @recipes_with_images.each do |recipe_with_image| %>
-			<div class = "featured-recipe">
-				<%= link_to recipe_with_image do %>
-					<%= image_tag recipe_with_image.image.url(:medium) %>
-					<h4><%= recipe_with_image.name %></h4>
-				<% end %>
-			</div>
-			<% end %>
+
 	          </div><!-- 
 	        --><div class="grid__item four-tenths portable-one-whole">
-	          <section class="islet home-recipes">
-	            <h3 class="delta">Recently Added Recipes</h3>
-				<%= render @latest_recipes %>
+	         
+	          <section class="islet--white home-recipes">
+	            <h3 class="delta bg-head--1">Recently Added Recipes</h3>
+				
+				<% @latest_recipes.each do |latest_recipe| %>
+					<div class=media>			
+						<%= image_tag latest_recipe.image.url(:medium), :class => "media__img" %>
+						<h4 class="epsilon"><%= latest_recipe.name %></h4>
+						<%= latest_recipe.description.html_safe unless latest_recipe.description.blank? %>
+						<%= link_to latest_recipe do %>
+						<p>Cook now &raquo;</p>
+						<% end %>	
+					</div>
+				<% end %>
+
 	          </section>
+
 	        </div><!-- 
 	        --><div class="grid__item four-tenths portable-one-whole">
-	          <section class="islet home-recipes">
-	            <h3 class="delta">Seasonal Recipes</h3>
-	            <%= render @latest_recipes %>
+	          <section class="islet--white home-recipes">
+	            <h3 class="delta bg-head--2">Seasonal Recipes</h3>
+	          <% @latest_recipes.each do |latest_recipe| %>
+					<div class=media>			
+						<%= image_tag latest_recipe.image.url(:medium), :class => "media__img" %>
+						<h4 class="epsilon"><%= latest_recipe.name %></h4>
+						<%= latest_recipe.description.html_safe unless latest_recipe.description.blank? %>
+						<%= link_to latest_recipe do %>
+						<p>Cook now &raquo;</p>
+						<% end %>	
+					</div>
+				<% end %>
 	          </section>
 	        </div><!-- 
 	        --><div class="grid__item two-tenths portable-one-whole">
-	          <section class="islet home-social">
-	            <h3 class="delta">Social</h3>
+	          <section class="islet--white home-social">
+	            <h3 class="delta bg-head--3">Social</h3>
 	             <div class="fb-activity fb_iframe_widget" data-site="www.nomelette.co.uk" data-action="like" data-height="300" data-header="true" data-font="arial" data-recommendations="true" fb-xfbml-state="rendered"><span style="vertical-align: bottom; width: 300px; height: 300px;"><iframe name="f182e9a42" width="1000px" height="300px" frameborder="0" allowtransparency="true" scrolling="no" style="border: none; visibility: visible; width: 300px; height: 300px;" src="http://www.facebook.com/plugins/activity.php?action=like&amp;header=true&amp;recommendations=true&amp;site=www.nomelette.co.uk&amp;font=arial&amp;height=300&amp;app_id=249183551766802&amp;locale=en_GB&amp;sdk=joey&amp;channel=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D24%23cb%3Df35654c46%26origin%3Dhttp%253A%252F%252Flocalhost%253A8888%252Ff244947f38%26domain%3Dlocalhost%26relation%3Dparent.parent" class=""></iframe></span></div>
 	            </section> 
 	        </div>

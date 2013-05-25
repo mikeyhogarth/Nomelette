@@ -7,7 +7,7 @@ class Recipe < ActiveRecord::Base
   	attr_accessible :name, :image, :description, :ingredients, :method, :preparation_time, :cooking_time, :serves, :vegetarian, :footnote, :book_id, :category_ids, :slug
 
   	has_attached_file 	:image, 
-  						:styles => { :full => "500x500>", :medium => "300x300>" , :thumb => "100x100>" }, 
+  						:styles => { :full => "500x500#", :medium => "300x300#" , :thumb => "100x100#" }, 
   						:storage => :s3,					  						
 					    :path => ":attachment/recipes/:basename/:basename-:style.:extension"
 	
