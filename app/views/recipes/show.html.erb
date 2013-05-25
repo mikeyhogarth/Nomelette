@@ -106,8 +106,19 @@
 					<!-- AddThis Button END -->
 
 				</div><!-- 
+				--><div class="grid__item one-whole">
+					<h3 class="center-heading"><span>Say Something!</span></h3>
+					<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=625379394143103";
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
+					<div class="fb-comments" data-href="<%="#{request.protocol}#{request.host_with_port}#{request.fullpath}"%>" data-width="600" data-num-posts="10"></div>
+				</div>
 
-				-->
 				<%#
 				<div class="grid__item one-whole">
 					<h3 class="center-heading"><span>Try these related recipes</span></h3>
