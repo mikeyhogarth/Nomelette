@@ -9,7 +9,8 @@ class Recipe < ActiveRecord::Base
   	has_attached_file 	:image, 
   						:styles => { :full => "500x500#", :medium => "300x300#" , :thumb => "100x100#" }, 
   						:storage => :s3,					  						
-					    :path => ":attachment/recipes/:basename/:basename-:style.:extension"
+					    :path => ":attachment/recipes/:basename/:basename-:style.:extension",
+					    :default_url => "content/no-img.jpg"
 	
 	acts_as_taggable_on :ingredient_tags	
 

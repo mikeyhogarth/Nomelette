@@ -1,6 +1,5 @@
 $(window).load(function(){
 
-
 function imageCarousel() {
 
   var carousel =  $('#carousel');
@@ -34,7 +33,17 @@ else {
       width       : 200
     },
     onCreate : function () {
-          carousel.parent().add(carousel).css('height', carousel.children().first().height() + 30 + 'px');
+          var maxHeight = -1;
+          carousel.children().each(function() {
+              maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+          });
+
+          /* carousel.children().each(function() {
+              $(this).height(maxHeight);
+          });*/
+
+           //alert(maxHeight);
+          carousel.parent().add(carousel).css('height', maxHeight + 30 + 'px');
         }
 
   });
