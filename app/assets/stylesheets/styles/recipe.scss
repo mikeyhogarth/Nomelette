@@ -9,6 +9,18 @@
 .recipe__method {
 	margin-top: 20px;
 }
+.recipe-info {
+	font-size: 14px;
+	dt {
+		display: block;
+		font-weight: 600;
+	}
+	dd {
+		display: block;
+		margin-left: 0;
+		margin-bottom: 1em;
+	}
+}
 .footnote {
-	background: transparent url(icons/hat-icon-grey.png) 12px center no-repeat;
+	background: #e5e5e5 url(icons/hat-icon-grey.png) 12px center no-repeat;
 }

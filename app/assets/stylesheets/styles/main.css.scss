@@ -25,14 +25,18 @@ body {
 .island,
 .islet,
 .mini-islet {
-	background-color: #fff;
 	@include border-radius($brand-round, $brand-round);
 }
-.islet.footnote {
+.islet.footnote {	
+	padding-left: 55px;
+}
+.islet--white {
+	@extend .islet;
+	background-color: #fff;
+}
+.grey {
 	background-color: #e5e5e5;
 	color: #727272;
-	padding-left: 55px;
-	//border: 1px solid shade(#e5e5e5, 5%);
 }
 .mini-islet {
 	display: block;

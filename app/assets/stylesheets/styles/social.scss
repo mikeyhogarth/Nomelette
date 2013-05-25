@@ -10,3 +10,16 @@
 		padding-bottom: 6px;
 	}
 }
+
+@include media-query(lap){
+	.addthis_toolbox {
+	a {
+		//display: inline;
+		float: left !important;
+	}
+	.addthis_button_pinterest_pinit {
+		//padding-bottom: 6px;
+	}
+}
+
+}

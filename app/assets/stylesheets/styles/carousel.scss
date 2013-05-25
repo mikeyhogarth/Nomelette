@@ -1,11 +1,15 @@
 #carousel {
 	article {
 		float: left;
-		//margin-left: 10px;
+		margin: 0 5px;
+		a {
+			display: block;
+		}
 		p {
 			background-color: $brand-color-2;
 			color: #fff;
 			padding: .5em;
+			margin: 0;
 			font-weight: 300;	
 		}
 	}
@@ -15,6 +19,7 @@
 }
 .carousel-container {
 	position: relative;
+	margin-bottom: 30px;
 }
 #prev, #next {
 	position: absolute;
@@ -24,8 +29,8 @@
 }
 
 #prev {
-	left: 12px;
+	left: 17px;
 }
 #next {
-	right: 12px;
+	right: 17px;
 }

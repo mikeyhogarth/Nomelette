@@ -44,3 +44,23 @@ a {
 		text-decoration: underline;
 	}
 }
+bg-head {
+	color: #fff;
+	line-height: 1em;
+	padding: .25em .5em .3em;
+
+}
+.bg-head--1,
+.bg-head--2,
+.bg-head--3 {
+	@extend bg-head;
+}
+.bg-head--1{
+	background-color: $brand-color;
+}
+.bg-head--2 {
+	background-color: $brand-color-2;
+}
+.bg-head--3 {
+	background-color: tint($brand-color, 40%);
+}
