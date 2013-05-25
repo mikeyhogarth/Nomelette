@@ -23,6 +23,16 @@
 							<span> From the book <%= link_to @recipe.book.title, @recipe.book %>.</span>
 						<% end %>
 					</p>
+
+					<ul class="nav">
+						<% @recipe.ingredient_tag_list.each do |tag| %>
+							<li><%= link_to tag.titleize, tag_path(tag.parameterize), :class => "pill" %></li>
+						<% end %>
+
+						<% @recipe.categories.each do |category| %>
+							<li><%= link_to category.name, category, :class => "pill", :itemprop => "recipeType" %></li>
+						<% end %>
+					</ul>
 					
 					<div itemprop="summary" class="lead">
 							<%= @recipe.description.html_safe unless @recipe.description.blank? %>
@@ -63,16 +73,6 @@
 
 									<%= content_tag :aside, @recipe.footnote.html_safe, :class => "grey footnote islet" unless @recipe.footnote.blank? %>
 								</div>
-								<ul class="nav">
-
-									<% @recipe.ingredient_tag_list.each do |tag| %>
-										<li><%= link_to tag.titleize, tag_path(tag.parameterize), :class => "pill" %></li>
-									<% end %>
-
-									<% @recipe.categories.each do |category| %>
-										<li><%= link_to category.name, category, :class => "pill", :itemprop => "recipeType" %></li>
-									<% end %>
-								</ul>
 							</div>
 						</div>
 				</div><!-- 
@@ -93,21 +93,26 @@
 							<% end %>
 						</dl>
 					<% end %> 
-							<!-- AddThis Button BEGIN -->
-							<div class="addthis_toolbox addthis_default_style">
-							<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-							<a class="addthis_button_tweet"></a>
-							<a class="addthis_button_pinterest_pinit"></a>
-							<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-							<a class="addthis_counter addthis_pill_style"></a>
-							</div>
-							<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
-							<!-- AddThis Button END -->
+
+					<!-- AddThis Button BEGIN -->
+					<div class="addthis_toolbox addthis_default_style">
+					<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+					<a class="addthis_button_tweet"></a>
+					<a class="addthis_button_pinterest_pinit"></a>
+					<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+					<a class="addthis_counter addthis_pill_style"></a>
+					</div>
+					<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
+					<!-- AddThis Button END -->
+
 				</div><!-- 
 
-				--><div class="grid__item one-whole">
+				-->
+				<%#
+				<div class="grid__item one-whole">
 					<h3 class="center-heading"><span>Try these related recipes</span></h3>
 				</div>
+				%>
 					
 
 					
