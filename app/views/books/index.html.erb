@@ -1,9 +1,12 @@
 <% page_title("Books") %>
 
-<h1>Books</h1>
 
-<ol>
-<% @books.each do |book| %>
-	<li><%= link_to book.title, book %> </li>
+
+<%= content_for :main_area do %>
+	<p>Sheila compiled many of her recipes into books, which are listed below.</p>
+	<ol>
+	<% @books.each do |book| %>
+		<li><%= link_to book.title, book %> </li>
+	<% end %>
+	</ol>
 <% end %>
-</ol>

@@ -4,7 +4,7 @@
   <head>
 <% end %> 
   
-   	<title>Nomelette <%= content_for?(:title) ? "&raquo; #{ yield(:title) }".html_safe  : "" %></title>
+   	<title><%= content_for?(:title) ? " #{ yield(:title) } | Nomelette".html_safe  : "" %></title>
     <meta name='description' content='<%= content_for?(:description) ? yield(:description).html_safe : "The recipes of Sheila Hogarth" %>' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />

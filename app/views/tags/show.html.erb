@@ -1,12 +1,22 @@
-<h1><%= @tag %>.</h1>
+<% page_title @tag %>
 
-<% if @ingredient_description %>
-	<blockquote>
-		<%= @ingredient_description %>
-		<small>Source: <a href = "http://www.wikipedia.org">Wikipedia</a></small>
-	</blockquote>
+<% content_for :main_area do %>
+	<% if @ingredient_description %>
+		<blockquote>
+			<%= @ingredient_description %>
+			<small>Source: <a href = "http://www.wikipedia.org">Wikipedia</a></small>
+		</blockquote>
+	<% end %>
+
+	<h2>Recipes that use <%= @tag %></h2>
+
+	<ul>
+		<% @recipes.each do |recipe| %>
+		<li>
+			<%= render recipe %>
+		</li>
+		<% end %>
+	</ul>
+
+	
 <% end %>
-
-<p>Recipes that use <%= @tag %>;</p>
-
-<%= render @recipes %>

@@ -1,6 +1,7 @@
 <% page_title(@book.title) %>
 
-<h1><%= @book.title %></h1>
+
+<%= content_for :main_area do %>
 
 <% unless @book.description.blank? %>
 	<%= @book.description.html_safe %>
@@ -20,3 +21,5 @@
 	</li>
 <% end %>
 </ul>
+
+<% end %>

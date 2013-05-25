@@ -14,6 +14,11 @@
     <%= render "shared/flash_notices" %>
 	
     <%= yield %>
+
+
+    <% if content_for? :main_area %>
+      <%= render "layouts/main_area" %>
+    <% end %>
     
     <%= render "shared/footer" %>    
     <%= javascript_include_tag "application" %>

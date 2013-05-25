@@ -7,7 +7,7 @@ class Recipe < ActiveRecord::Base
   	attr_accessible :name, :image, :description, :ingredients, :method, :preparation_time, :cooking_time, :serves, :vegetarian, :footnote, :book_id, :category_ids, :slug
 
   	has_attached_file 	:image, 
-  						:styles => { :full => "500x500#", :medium => "300x300#" , :thumb => "100x100#" }, 
+  						:styles => { :full => "500x500#", :medium => "300x300#", :banner => "500x411#", :thumb => "100x100#" }, 
   						:storage => :s3,					  						
 					    :path => ":attachment/recipes/:basename/:basename-:style.:extension",
 					    :default_url => "content/no-img.jpg"
@@ -24,6 +24,7 @@ class Recipe < ActiveRecord::Base
 	  
 	#scopes	
 	scope :latest, lambda { |num| {:order => "created_at DESC, name ASC", :limit => num} }
+	scope :featured, lambda { |num| { :conditions => "image_file_name IS NOT NULL and image_file_name <> ''" , :limit => num } }
 	scope :with_image, where("image_file_name IS NOT NULL and image_file_name <> ''").order("created_at DESC")
 	scope :popular, lambda { |num| {:limit => num} }
 

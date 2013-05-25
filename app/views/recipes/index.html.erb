@@ -1,5 +1,12 @@
 <% page_title("Recipes") %>
 
-<h1>Recipes</h1>
-
-<%= render @recipes %>
+<% content_for :main_area do %>
+	<p>Recipes uploaded so far are listed below</p>
+	<ul>
+		<% @recipes.each do |recipe| %>
+		<li>
+			<%= render recipe %>
+		</li>
+		<% end %>
+	</ul>
+<% end %>

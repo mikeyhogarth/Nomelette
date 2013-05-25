@@ -22,32 +22,21 @@
 	        <div class="grid__item one-whole">
 	          <h2 class="center-heading"><span>Featured Recipes</span></h2>
 	        
-		           <section class="carousel-container">
+		        <section class="carousel-container">
 		          <div id="carousel">
+		          	<% @featured_recipes.each do |featured_recipe| %>
 			          <article class="feat-recipe islet--white">
-			          	<img src="http://placekitten.com/500/411">
-			          	<p>Name of Recipe</p>
+			          	
+			          	<%= link_to featured_recipe do %>
+			          		<%= image_tag featured_recipe.image.url(:banner) %>
+			          	<% end %>
+
+			          	<%= link_to featured_recipe do %>
+			          		<p><%= featured_recipe.name %></p>
+			          	<% end %>
+
 			          </article>
-			          <article class="feat-recipe islet--white">
-			          	<img src="http://placekitten.com/500/411">
-			          	<p>Name of Recipe</p>
-			          </article>
-			          <article class="feat-recipe islet--white">
-			          	<img src="http://placekitten.com/500/411">
-			          	<p>Name of Recipe</p>
-			          </article>
-			          <article class="feat-recipe islet--white">
-			          	<img src="http://placekitten.com/500/411">
-			          	<p>Name of Recipe</p>
-			          </article>
-			          <article class="feat-recipe islet--white">
-			          	<img src="http://placekitten.com/500/411">
-			          	<p>Name of Recipe</p>
-			          </article>
-			           <article class="feat-recipe islet--white">
-			          	<img src="http://placekitten.com/500/411">
-			          	<p>Name of Recipe</p>
-			          </article>
+			        <% end %>			        
 			      </div>
 			      <a id="prev" title="Previous"><%= image_tag "content/prev.png", :alt => 'Previous', :title => 'Previous' %></a>
 				<a id="next" title="Next"><%= image_tag "content/next.png", :alt => 'Next', :title => 'Next' %></a>
