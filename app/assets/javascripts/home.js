@@ -33,6 +33,9 @@ else {
       width       : 200
     },
     onCreate : function () {
+          carousel.show();
+
+
           var maxHeight = -1;
           carousel.children().each(function() {
               maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
@@ -44,6 +47,7 @@ else {
 
            //alert(maxHeight);
           carousel.parent().add(carousel).css('height', maxHeight + 30 + 'px');
+
         }
 
   });
