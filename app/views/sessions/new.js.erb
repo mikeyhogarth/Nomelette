@@ -1,0 +1,16 @@
+if(!($("#modal_popup_wrapper").length > 0))
+{
+	var $content = $("body").append("<div id = 'modal_popup_wrapper'></div>");
+}
+
+var $popup_wrapper = $content.find("#modal_popup_wrapper");
+
+$popup_wrapper.load("<%= modal_login_path %>", function() {		
+	$("#modal_window").show();
+	$("#overlay").show();
+	$(".modal_close, #overlay").on("click", function() {
+		$("#modal_window").hide();
+		$("#overlay").hide();
+	});
+});
+		

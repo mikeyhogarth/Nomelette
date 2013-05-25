@@ -19,7 +19,7 @@
 			      <% if current_user %>
 			        <%= content_tag(:li, link_to("Logout", :logout)) %>
 			      <% else %>
-			        <%= content_tag(:li, link_to("Login", :login, :class => "btn--2")) %>
+			        <%= content_tag(:li, link_to("Login", :login, :class => "btn--2 login-button", :remote => true)) %>
 			      <% end %>
                 </ul>
            </nav>   

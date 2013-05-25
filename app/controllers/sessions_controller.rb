@@ -1,6 +1,11 @@
 class SessionsController < ApplicationController
 
 	def new
+		redirect_to :root_url if current_user
+	end
+
+	def modal_login
+		render "sessions/user_login_modal", :layout => false
 	end
 
 	def new_admin

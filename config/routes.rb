@@ -1,13 +1,15 @@
 Nomelette::Application.routes.draw do
 
   root :to => 'home#index'
-
-  #named routes
   match "about" => 'home#about'   , :as => :about
+
+
   match 'login' => 'sessions#new', :as => :login
   match 'admin/login' => 'sessions#new_admin', :as => :admin_login
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'authenticate' => 'sessions#create', :as => :authenticate
+  match "modal_login" => 'sessions#modal_login', :as => :modal_login
+
 
   #public REST routes
 
