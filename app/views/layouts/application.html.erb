@@ -22,6 +22,11 @@
     
     <%= render "shared/footer" %>    
     <%= javascript_include_tag "application" %>
+    
+    <% if content_for? :page_specific_javascript_includes %>
+      <%= yield :page_specific_javascript_includes %>
+    <% end %>
+
     <%= render "shared/tracking_codes" %>
   </body>
 </html>

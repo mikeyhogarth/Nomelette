@@ -36,4 +36,8 @@ class Recipe < ActiveRecord::Base
 			self.serves.blank?)
 	end
 
+	def has_image?
+		image.exists?
+	end
+
 end
