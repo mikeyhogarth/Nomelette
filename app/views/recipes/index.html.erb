@@ -4,10 +4,6 @@
 <% content_for :main_area do %>
 	<p>Recipes uploaded so far are listed below</p>
 	<ul class = "recipe-list">
-		<% @recipes.each do |recipe| %>
-		<li>
-			<%= render recipe %>
-		</li>
-		<% end %>
+		<%= render @recipes %>
 	</ul>
 <% end %>

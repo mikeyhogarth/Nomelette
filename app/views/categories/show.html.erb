@@ -2,5 +2,13 @@
 <% page_description("Recipes in the #{@category.name} category.") %>
 
 <%= content_for :main_area do %>
-	<%= render(@category.recipes) || content_tag(:p, "Sorry, no recipes in this category") %>
+
+	<% if @category.recipes.any? %>
+		<ul class = "recipe-list">
+			<%= render @category.recipes %>			
+		</ul>
+	<% else %>
+		<%= content_tag(:p, "Sorry, no recipes in this category") %>
+	<% end %>
+	
 <% end %>
