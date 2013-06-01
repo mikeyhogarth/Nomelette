@@ -25,9 +25,17 @@
 	background: #e5e5e5 url(icons/hat-icon-grey.png) 12px center no-repeat;
 }
 
+
+
 ul.recipe-list
 {
 	list-style: none; 
+
+	.vegetarian-aside
+	{
+		color: $brand-color-vegetarian;
+		font-size: $milli-size;
+	}
 
 	article
 	{
