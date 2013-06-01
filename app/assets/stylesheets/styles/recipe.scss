@@ -24,3 +24,39 @@
 .footnote {
 	background: #e5e5e5 url(icons/hat-icon-grey.png) 12px center no-repeat;
 }
+
+ul.recipe-list
+{
+	list-style: none; 
+
+	article
+	{
+		border: solid 1px #ddd;
+		@include border-radius($brand-round, $brand-round);
+		background-color: #fff;
+		padding: 5px;
+		margin-bottom: 5px;
+		list-style: none;
+		height: 80px;
+
+		img
+		{
+			display: inline;
+			float: left;
+		}
+
+		h3
+		{
+			font-size: $h6-size;
+			margin-left: 80px;			
+			margin-bottom: 0;
+		}
+
+		aside
+		{
+			font-size: $milli-size;
+			margin-left: 80px;
+
+		}
+	}
+}

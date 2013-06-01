@@ -1,4 +1,27 @@
 <article>
+
+	<%= link_to recipe do %>
+		<% if recipe.has_image? %>
+			<%= image_tag recipe.image.url(:thumb), :width => 67, :height => 67 %>
+		<% else %>
+			<%= image_tag "icons/hat-icon-grey.png", :width => 67, :height => 67 %>
+		<% end %>
+	<% end %>
+	<h3>
 	<%= link_to recipe.name, recipe %> 
 	<%= content_tag :strong, " (Vegetarian)" if recipe.vegetarian? %>
+	</h3>
+	<aside>
+		<% unless recipe.serves.blank? %>
+			Serves <%= recipe.serves %> people.
+		<% end %>
+
+		<% unless recipe.cooking_time.blank? %>
+			<time><%= recipe.cooking_time %></time> To Cook. 
+		<% end %>
+
+		<% unless recipe.preparation_time.blank? %>
+		<time><%= recipe.preparation_time %></time> Prep. 
+		<% end %>
+	</aside>
 </article>
