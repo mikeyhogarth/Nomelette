@@ -43,6 +43,18 @@ class RecipeObserver < ActiveRecord::Observer
 
 	    end
 
+	    new_html_ingredients = String.new
+
+	    recipe.html_ingredients.each_line do |line| 
+	    	if line.starts_with? "--"
+				new_html_ingredients << "<h3>#{line[2..line.length].strip}</h3>\n"
+	    	else
+	    		new_html_ingredients << line
+	    	end
+	    end
+
+	    recipe.html_ingredients = new_html_ingredients
+
 	    recipe.ingredient_tag_list = ingredient_tag_array.join(", ") unless(ingredient_tag_array.empty?)
 	    		
 	end
