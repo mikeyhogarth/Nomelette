@@ -51,7 +51,13 @@
 									<h2>Ingredients</h2>
 										<ul>
 											<% @recipe.html_ingredients.each_line do |ingredient| %>
-												<li itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><%= raw ingredient %></li>
+												<% if ingredient.starts_with? "<h" %>
+													</ul>
+													<%= ingredient %>
+													<ul>
+												<% else %>
+													<li itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><%= raw ingredient %></li>
+												<% end %>
 											<% end %>
 										</ul>
 								</div>	
