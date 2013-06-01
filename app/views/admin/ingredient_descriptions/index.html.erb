@@ -1,24 +1,35 @@
-<h1>Listing Ingredient Descriptions</h1>
 
-<table>
-  <tr>
-    <th>Tag</th>    
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% page_title("Listing Ingredient Descriptions") %>
 
+<%= content_for :main_area do %>
 
-<% @ingredient_descriptions.each do |ingredient_description| %>
-  <tr>
-    <td><%= ingredient_description.name %></td>        
-    <td><%= link_to 'Show', [:admin, ingredient_description] %></td>
-    <td><%= link_to 'Edit', edit_admin_ingredient_description_path(ingredient_description) %></td>
-    <td><%= link_to 'Destroy', [:admin,ingredient_description], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<%= render "admin/shared/admin_navigation" %>
 
-<br />
-
+<p>
 <%= link_to 'New Ingredient description', new_admin_ingredient_description_path %>
+</p>
+
+  <table>
+    <tr>
+      <th>Tag</th>    
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+
+  <% @ingredient_descriptions.each do |ingredient_description| %>
+    <tr>
+      <td><%= ingredient_description.name %></td>        
+      <td><%= link_to 'Show', [:admin, ingredient_description] %></td>
+      <td><%= link_to 'Edit', edit_admin_ingredient_description_path(ingredient_description) %></td>
+      <td><%= link_to 'Destroy', [:admin,ingredient_description], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+
+  
+
+<% end %>

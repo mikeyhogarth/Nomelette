@@ -1,6 +1,12 @@
-<h1>Listing Books</h1>
+<% page_title("Listing Books") %>
+
+<%= content_for :main_area do %>
 
 <%= render "admin/shared/admin_navigation" %>
+
+<p>
+<%= link_to 'New Book', new_admin_book_path %>
+</p>
 
 <table>
   <tr>
@@ -22,4 +28,5 @@
 
 <br />
 
-<%= link_to 'New Book', new_admin_book_path %>
+
+<% end %>

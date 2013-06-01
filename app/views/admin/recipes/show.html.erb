@@ -1,40 +1,44 @@
-<p id="notice"><%= notice %></p>
+<% page_title(@recipe.name) %>
 
-<p>
-  <b>Name:</b>
-  <%= @recipe.name %>
-</p>
+<%= content_for :main_area do %>
 
-<p>
-  <b>Serves:</b>
-  <%= @recipe.serves %>
-</p>
+  <p>
+    <b>Name:</b>
+    <%= @recipe.name %>
+  </p>
 
-<p>
-  <b>Cooking time:</b>
-  <%= @recipe.cooking_time %>
-</p>
+  <p>
+    <b>Serves:</b>
+    <%= @recipe.serves %>
+  </p>
 
-<p>
-  <b>Preparation time:</b>
-  <%= @recipe.preparation_time %>
-</p>
+  <p>
+    <b>Cooking time:</b>
+    <%= @recipe.cooking_time %>
+  </p>
 
-<p>
-  <b>Description:</b>
-  <%= @recipe.description %>
-</p>
+  <p>
+    <b>Preparation time:</b>
+    <%= @recipe.preparation_time %>
+  </p>
 
-<p>
-  <b>Ingredients:</b>
-  <%= @recipe.ingredients %>
-</p>
+  <p>
+    <b>Description:</b>
+    <%= @recipe.description %>
+  </p>
 
-<p>
-  <b>Method:</b>
-  <%= @recipe.method %>
-</p>
+  <p>
+    <b>Ingredients:</b>
+    <%= @recipe.ingredients %>
+  </p>
 
-<%= link_to 'Preview', @recipe %> |
-<%= link_to 'Edit', edit_admin_recipe_path(@recipe) %> |
-<%= link_to 'Back', admin_recipes_path %>
+  <p>
+    <b>Method:</b>
+    <%= @recipe.method %>
+  </p>
+
+  <%= link_to 'Preview', @recipe %> |
+  <%= link_to 'Edit', edit_admin_recipe_path(@recipe) %> |
+  <%= link_to 'Back', admin_recipes_path %>
+
+<% end %>

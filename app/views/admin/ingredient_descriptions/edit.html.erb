@@ -1,6 +1,7 @@
-<h1>Editing Ingredient Description</h1>
+<% page_title("Editing Ingredient Description") %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', [:admin, @ingredient_description] %> |
-<%= link_to 'Back', admin_ingredient_descriptions_path %>
+<%= content_for :main_area do %>
+	<%= render 'form' %>
+	<%= link_to 'Show', [:admin, @ingredient_description] %> |
+	<%= link_to 'Back', admin_ingredient_descriptions_path %>
+<% end %>

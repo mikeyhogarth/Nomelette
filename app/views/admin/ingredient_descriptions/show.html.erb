@@ -1,15 +1,16 @@
-<p id="notice"><%= notice %></p>
+<% page_title(@ingredient_description.text) %>
 
-<p>
-  <b>Tag:</b>
-  <%= @ingredient_description.tag_id %>
-</p>
+<%= content_for :main_area do %>
+	<p>
+	  <b>Tag:</b>
+	  <%= @ingredient_description.tag_id %>
+	</p>
 
-<p>
-  <b>Text:</b>
-  <%= @ingredient_description.text %>
-</p>
+	<p>
+	  <b>Text:</b>
+	  <%= @ingredient_description.text %>
+	</p>
 
-
-<%= link_to 'Edit', edit_admin_ingredient_description_path(@ingredient_description) %> |
-<%= link_to 'Back', admin_ingredient_descriptions_path %>
+	<%= link_to 'Edit', edit_admin_ingredient_description_path(@ingredient_description) %> |
+	<%= link_to 'Back', admin_ingredient_descriptions_path %>
+<% end %>

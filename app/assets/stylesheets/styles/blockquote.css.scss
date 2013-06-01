@@ -1,0 +1,14 @@
+blockquote
+{
+	text-indent: 0;
+	background-color: #FFF;
+	padding: 10px;
+	border: 1px solid #ccc;
+	@include border-radius($brand-round, $brand-round);
+
+	cite
+	{
+		font-size: $milli-size;
+		margin-left: 10px;
+	}
+}

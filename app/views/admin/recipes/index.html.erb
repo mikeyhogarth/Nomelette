@@ -1,35 +1,34 @@
-<h1>Listing Recipes</h1>
+<% page_title("Listing Recipes") %>
 
-<%= render "admin/shared/admin_navigation" %>
+<%= content_for :main_area do %>
+  <%= render "admin/shared/admin_navigation" %>
 
-<p>
-  <%= link_to 'New Recipe', new_admin_recipe_path %>
-</p>
+  <p>
+    <%= link_to 'New Recipe', new_admin_recipe_path %>
+  </p>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Serves</th>
-    <th>Cooking time</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Serves</th>
+      <th>Cooking time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<% @recipes.each do |recipe| %>
-  <tr>
-    <td><%= recipe.name %></td>
-    <td><%= recipe.serves %></td>
-    <td><%= recipe.cooking_time %></td>
-    <td><%= recipe.description %></td>
-    <td><%= link_to 'Preview', recipe %></td>
-    <td><%= link_to 'Show', [:admin,recipe] %></td>
-    <td><%= link_to 'Edit', edit_admin_recipe_path(recipe) %></td>
-    <td><%= link_to 'Destroy', [:admin,recipe], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <% @recipes.each do |recipe| %>
+    <tr>
+      <td><%= recipe.name %></td>
+      <td><%= recipe.serves %></td>
+      <td><%= recipe.cooking_time %></td>
+      <td><%= link_to 'Preview', recipe %></td>
+      <td><%= link_to 'Show', [:admin,recipe] %></td>
+      <td><%= link_to 'Edit', edit_admin_recipe_path(recipe) %></td>
+      <td><%= link_to 'Destroy', [:admin,recipe], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+
 <% end %>
-</table>
-
-

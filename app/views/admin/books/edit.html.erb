@@ -1,6 +1,9 @@
-<h1>Editing Book</h1>
+<% page_title("Editing Book") %>
 
-<%= render 'form' %>
+<%= content_for :main_area do %>
+	<%= render 'form' %>
+	<%= link_to 'Show', @admin_book %> |
+	<%= link_to 'Back', admin_books_path %>
+<% end %>
 
-<%= link_to 'Show', @admin_book %> |
-<%= link_to 'Back', admin_books_path %>
+

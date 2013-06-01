@@ -1,6 +1,9 @@
-<h1>Editing category</h1>
+<% page_title("Editing category") %>
 
-<%= render 'form' %>
+<%= content_for :main_area do %>
 
-<%= link_to 'Show', [:admin,@category] %> |
-<%= link_to 'Back', admin_categories_path %>
+	<%= render 'form' %>
+	<%= link_to 'Show', [:admin,@category] %> |
+	<%= link_to 'Back', admin_categories_path %>
+
+<% end %>

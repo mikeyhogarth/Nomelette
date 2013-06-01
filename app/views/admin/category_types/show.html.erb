@@ -1,14 +1,17 @@
+<% page_title(@category_type.name) %>
 
-<p>
-  <b>Name:</b>
-  <%= @category_type.name %>
-</p>
+<%= content_for :main_area do %>
+	<p>
+	  <b>Name:</b>
+	  <%= @category_type.name %>
+	</p>
 
-<p>
-  <b>Slug:</b>
-  <%= @category_type.slug %>
-</p>
+	<p>
+	  <b>Slug:</b>
+	  <%= @category_type.slug %>
+	</p>
 
 
-<%= link_to 'Edit', edit_admin_category_type_path(@category_type) %> |
-<%= link_to 'Back', admin_category_types_path %>
+	<%= link_to 'Edit', edit_admin_category_type_path(@category_type) %> |
+	<%= link_to 'Back', admin_category_types_path %>
+<% end %>
