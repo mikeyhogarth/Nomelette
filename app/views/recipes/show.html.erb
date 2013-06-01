@@ -53,7 +53,7 @@
 											<% @recipe.html_ingredients.each_line do |ingredient| %>
 												<% if ingredient.starts_with? "<h" %>
 													</ul>
-													<%= ingredient %>
+													<%= raw ingredient %>
 													<ul>
 												<% else %>
 													<li itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><%= raw ingredient %></li>
