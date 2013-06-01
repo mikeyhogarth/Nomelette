@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  
   def index  	
   	@latest_recipes = Recipe.latest 10
   	@featured_recipes = Recipe.featured 6
@@ -12,4 +13,5 @@ class HomeController < ApplicationController
 
   def contact
   end
+
 end

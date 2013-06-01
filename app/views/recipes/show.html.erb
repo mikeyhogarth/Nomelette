@@ -46,20 +46,10 @@
 
 				--><div class="grid__item ten-twelfths portable-one-whole">
 						<div class="grid grid--rev">
+							
 							<div class="grid__item two-fifths palm-one-whole">
 								<div class="recipe__ingredients">
-									<h2>Ingredients</h2>
-										<ul>
-											<% @recipe.html_ingredients.each_line do |ingredient| %>
-												<% if ingredient.starts_with? "<h" %>
-													</ul>
-													<%= raw ingredient %>
-													<ul>
-												<% else %>
-													<li itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><%= raw ingredient %></li>
-												<% end %>
-											<% end %>
-										</ul>
+									<%= render "ingredients", :html_ingredients => @recipe.html_ingredients %>
 								</div>	
 							</div><!-- 
 
@@ -91,19 +81,7 @@
 
 				--><div class="grid__item two-twelfths portable-one-whole">
 					<% if @recipe.mentions_serves_or_times %>
-						<dl class="recipe-info islet grey">
-							<% unless @recipe.serves.blank? %>
-								<dt>Serves</dt><dd itemprop = "yield"><%= @recipe.serves %></dd>
-							<% end %>
-
-							<% unless @recipe.cooking_time.blank? %>
-								<dt>Cooking Time</dt><dd><time itemprop="cookTime"><%= @recipe.cooking_time %></time></dd>
-							<% end %>
-
-							<% unless @recipe.preparation_time.blank? %>
-								<dt>Preparation Time</dt><dd><time itemprop="prepTime"><%= @recipe.preparation_time %></time></dd>
-							<% end %>
-						</dl>
+						<%= render "recipe_metas", :recipe => @recipe %>
 					<% end %> 
 
 					<!-- AddThis Button BEGIN -->
@@ -136,20 +114,6 @@
 					<h3 class="center-heading"><span>Try these related recipes</span></h3>
 				</div>
 				%>
-					
-
-					
-					
-
-					
-
-					
-
-
-					
-
-					
-
 					
 			</div>
 		</div>

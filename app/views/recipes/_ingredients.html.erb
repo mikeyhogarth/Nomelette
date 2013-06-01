@@ -1,0 +1,14 @@
+<h2>
+	Ingredients
+</h2>
+<ul>
+	<% html_ingredients.each_line do |ingredient| %>
+		<% if ingredient.starts_with? "<h" %>
+			</ul>
+			<%= raw ingredient %>
+			<ul>
+		<% else %>
+			<li itemprop="ingredient" itemscope itemtype="http://data-vocabulary.org/RecipeIngredient"><%= raw ingredient %></li>
+		<% end %>
+	<% end %>
+</ul>

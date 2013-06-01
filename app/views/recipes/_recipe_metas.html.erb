@@ -1,0 +1,13 @@
+<dl class="recipe-info islet grey">
+	<% unless recipe.serves.blank? %>
+		<dt>Serves</dt><dd itemprop = "yield"><%= recipe.serves %></dd>
+	<% end %>
+
+	<% unless recipe.cooking_time.blank? %>
+		<dt>Cooking Time</dt><dd><time itemprop="cookTime"><%= recipe.cooking_time %></time></dd>
+	<% end %>
+
+	<% unless recipe.preparation_time.blank? %>
+		<dt>Preparation Time</dt><dd><time itemprop="prepTime"><%= recipe.preparation_time %></time></dd>
+	<% end %>
+</dl>
