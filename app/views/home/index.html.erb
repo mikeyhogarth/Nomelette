@@ -50,17 +50,10 @@
 	            <h3 class="delta bg-head--1">Recently Added Recipes</h3>
 				
 				<% @latest_recipes.each do |latest_recipe| %>
-					<div class=media>		
-						<% if latest_recipe.has_image? %>	
-							<%= link_to latest_recipe do %>
-								<%= image_tag latest_recipe.image.url(:medium), :class => "media__img" %>
-							<% end %>
-						<% end %>
-
+					<div class="media latest_recipe">		
 						<%= link_to latest_recipe do %>
-							<h4 class="epsilon"><%= latest_recipe.name %></h4>
+						<h4 class="epsilon"><%= latest_recipe.name %></h4>
 						<% end %>
-						<%= latest_recipe.description.html_safe unless latest_recipe.description.blank? %>
 					</div>
 				<% end %>
 
@@ -71,7 +64,7 @@
 	          <section class="islet--white home-recipes">
 	            <h3 class="delta bg-head--2">Seasonal Recipes</h3>
 	          <% @recipes_with_images.each do |seasonal_recipe| %>
-					<div class=media>			
+					<div class="media">			
 						<% if seasonal_recipe.has_image? %>
 							<%= link_to seasonal_recipe do %>
 								<%= image_tag seasonal_recipe.image.url(:medium), :class => "media__img" %>

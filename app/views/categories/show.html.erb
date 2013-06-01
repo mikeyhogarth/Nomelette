@@ -1,5 +1,5 @@
 <% page_title(@category.name) %>
-
+<% page_description("Recipes in the #{@category.name} category.") %>
 
 <%= content_for :main_area do %>
 	<%= render(@category.recipes) || content_tag(:p, "Sorry, no recipes in this category") %>
