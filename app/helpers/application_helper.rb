@@ -20,7 +20,7 @@ module ApplicationHelper
 	#Comma selerated list for links such as categories
 	def comma_seperated_links_for(list)
     	return if list.count == 0
-    	list.collect {|item| link_to(item.name, url_for(item)) }.join(", ").html_safe
+    	list.sort { |x,y| x.name <=> y.name}.collect {|item| link_to(item.name, url_for(item)) }.join(", ").html_safe
   	end
   
   	#shows plural without including number

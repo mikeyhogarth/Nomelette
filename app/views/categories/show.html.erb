@@ -5,7 +5,7 @@
 
 	<% if @category.recipes.any? %>
 		<ul class = "recipe-list">
-			<%= render @category.recipes %>			
+			<%= render @category.recipes.order("name ASC") %>			
 		</ul>
 	<% else %>
 		<%= content_tag(:p, "Sorry, no recipes in this category") %>

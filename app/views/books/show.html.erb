@@ -8,7 +8,7 @@
 	<%= @book.description.html_safe %>
 <% end %>
 
-<%= render(@book.recipes) || content_tag(:p, "Sorry, no recipes in this book") %>
+<%= render(@book.recipes.order("name ASC")) || content_tag(:p, "Sorry, no recipes in this book") %>
 
 <h2>More Books</h2>
 <ul>
