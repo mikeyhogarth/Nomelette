@@ -1,4 +1,5 @@
 #carousel {
+
 	article {
 		float: left;
 		margin: 0 5px;
@@ -20,6 +21,7 @@
 .carousel-container {
 	position: relative;
 	margin-bottom: 30px;
+	height: 230px;
 }
 #prev, #next {
 	position: absolute;
@@ -34,3 +36,4 @@
 #next {
 	right: 17px;
 }
+
