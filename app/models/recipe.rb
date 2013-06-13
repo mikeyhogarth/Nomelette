@@ -24,9 +24,10 @@ class Recipe < ActiveRecord::Base
 	  
 	#scopes	
 	scope :latest, lambda { |num| {:order => "created_at DESC, name ASC", :limit => num} }
-	scope :featured, lambda { |num| { :conditions => "image_file_name IS NOT NULL and image_file_name <> ''" , :limit => num } }
+	scope :featured, lambda { |num| { :conditions => "image_file_name IS NOT NULL and image_file_name <> ''" , :limit => num, :order => :created_at } }
 	scope :with_image, where("image_file_name IS NOT NULL and image_file_name <> ''").order("created_at DESC")
 	scope :popular, lambda { |num| {:limit => num} }
+	scope :with_description, where("description IS NOT NULL and description <> ''")
 
 	#public methods
 	def mentions_serves_or_times
@@ -38,6 +39,12 @@ class Recipe < ActiveRecord::Base
 
 	def has_image?
 		image.exists?
+	end
+
+	def self.of_the_day
+		total_recipes = Recipe.count
+		day_seed = DateTime.now.midnight.to_i % total_recipes		
+		return Recipe.all.drop(day_seed).take(1).first		
 	end
 
 end

@@ -40,7 +40,6 @@
 					
 					<div itemprop="summary" class="lead">
 							<%= @recipe.description.html_safe unless @recipe.description.blank? %>
-							<%= content_tag :span, "Suitable for vegetarians" if @recipe.vegetarian? %>
 					</div>	
 				</div><!-- 
 

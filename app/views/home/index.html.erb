@@ -45,6 +45,16 @@
 
 	          </div><!-- 
 	        --><div class="grid__item four-tenths portable-one-whole">
+
+	          <section class="islet--white home-recipes">
+	            <h3 class="delta bg-head--1">Recipe of the Day</h3>				
+					<div class="media latest_recipe">		
+						<%= link_to @recipe_of_the_day do %>
+						<h4 class="epsilon"><%= @recipe_of_the_day.name %></h4>
+						<% end %>
+					</div>
+	          </section>
+
 	         
 	          <section class="islet--white home-recipes">
 	            <h3 class="delta bg-head--1">Recently Added Recipes</h3>
@@ -63,7 +73,7 @@
 	        --><div class="grid__item four-tenths portable-one-whole">
 	          <section class="islet--white home-recipes">
 	            <h3 class="delta bg-head--2">Seasonal Recipes</h3>
-	          <% @recipes_with_images.each do |seasonal_recipe| %>
+	          <% @popular_recipes.each do |seasonal_recipe| %>
 					<div class="media">			
 						<% if seasonal_recipe.has_image? %>
 							<%= link_to seasonal_recipe do %>

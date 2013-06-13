@@ -1,13 +1,10 @@
 class HomeController < ApplicationController
   
   def index  	
-  	@latest_recipes = Recipe.latest 10
-
+  	@latest_recipes = Recipe.latest 15
   	@featured_recipes = Recipe.featured 6
-
-    @recipes_with_images = Recipe.with_image.limit 2
-
-  	@category_types = CategoryType.includes(:categories).joins([:categories])
+    @popular_recipes = Recipe.with_description.with_image.shuffle.take(4)
+    @recipe_of_the_day = Recipe.of_the_day
   end
 
   def about
