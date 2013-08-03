@@ -43,6 +43,9 @@ class Recipe < ActiveRecord::Base
 
 	def self.of_the_day
 		total_recipes = Recipe.count
+
+		return nil if(total_recipes == 0)
+
 		day_seed = DateTime.now.midnight.to_i % total_recipes		
 		return Recipe.all.drop(day_seed).take(1).first		
 	end
