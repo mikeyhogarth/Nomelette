@@ -25,10 +25,9 @@ set :branch, "master"
 
 # VPS
 
-role :web, "162.13.46.231"
-role :app, "162.13.46.231"
-role :db,  "162.13.46.231", :primary => true
-role :db,  "162.13.46.231"
+role :web, "nomelette.co.uk"
+role :app, "nomelette.co.uk"
+role :db,  "nomelette.co.uk", :primary => true
 
 # Passenger
 
