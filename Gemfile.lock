@@ -88,6 +88,9 @@ GEM
     json (1.7.7)
     jwt (0.1.8)
       multi_json (>= 1.5)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -185,7 +188,7 @@ DEPENDENCIES
   acts-as-taggable-on
   aws-sdk
   bcrypt-ruby (~> 3.0.0)
-  capistrano
+  capistrano (= 2.15.5)
   ckeditor
   coffee-rails (~> 3.2.1)
   compass-inuit
@@ -193,6 +196,7 @@ DEPENDENCIES
   friendly_id (~> 4.0.9)
   httparty
   jquery-rails
+  kaminari
   mysql2
   omniauth
   omniauth-facebook

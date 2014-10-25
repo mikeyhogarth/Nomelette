@@ -3,7 +3,9 @@
 
 <% content_for :main_area do %>
 	<p>Recipes uploaded so far are listed below</p>
+  <%= paginate @recipes %>
 	<ul class = "recipe-list">
 		<%= render @recipes %>
 	</ul>
+  <%= paginate @recipes %>
 <% end %>

@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
 	def index
-		@recipes = Recipe.find(:all, :order => "name ASC")
+    @recipes = Recipe.order(:name).page params[:page]
 	end
 
 	def show

@@ -34,12 +34,13 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano'
+gem 'capistrano', '2.15.5'
 gem 'rvm-capistrano'
 
 # To use debugger
 # gem 'debugger'
 
+gem 'kaminari'
 gem 'friendly_id', '~> 4.0.9'
 gem "ckeditor"
 gem 'paperclip', '~> 3.0'
