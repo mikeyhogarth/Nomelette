@@ -36,8 +36,11 @@
 							<li><%= link_to category.name, category, :class => "pill", :itemprop => "recipeType" %></li>
 						<% end %>
 					</ul>
-          <%= content_tag :aside, class: [:grey, :footnote, :islet] do %>
-             No image is available for this recipe. If you cook this, <a href = "http://www.facebook.com/Nomelette">let us know</a>!
+
+          <% if !@recipe.has_image? %>
+            <%= content_tag :aside, class: [:grey, :footnote, :islet] do %>
+               No image is available for this recipe. If you cook this, <a href = "http://www.facebook.com/Nomelette">let us know</a>!
+            <% end %>
           <% end %>
 
 					
