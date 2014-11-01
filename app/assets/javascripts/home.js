@@ -3,16 +3,18 @@ $(window).load(function(){
 function imageCarousel() {
 
   var carousel =  $('#carousel');
-
+ 
   var width = $(window).width();
+
   if(width <=480) {
      var maxNum = 1
   }
-else {
-  var maxNum = 5
-}
-    
+  else {
+    var maxNum = 5
+  }
 
+  if(typeof carousel[0] != 'undefined') 
+  {
     carousel.carouFredSel({
     auto: true,
     responsive: true,
@@ -50,7 +52,8 @@ else {
 
         }
 
-  });
+    });
+  }
 
     
 
