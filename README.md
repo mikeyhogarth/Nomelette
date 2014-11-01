@@ -1,6 +1,5 @@
 Nomelette
 =========
 
-We're back baby :)
-
+Showcasing the recipes of Sheila Hogarth
 
