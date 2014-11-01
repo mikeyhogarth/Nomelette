@@ -27,7 +27,6 @@
 							<span> From the book <%= link_to @recipe.book.title, @recipe.book %>.</span>
 						<% end %>
 					</p>
-
 					<ul class="nav">
 						<% @recipe.ingredient_tag_list.each do |tag| %>
 							<li><%= link_to tag.titleize, tag_path(tag.parameterize), :class => "pill" %></li>
@@ -37,6 +36,10 @@
 							<li><%= link_to category.name, category, :class => "pill", :itemprop => "recipeType" %></li>
 						<% end %>
 					</ul>
+          <%= content_tag :aside, class: [:grey, :footnote, :islet] do %>
+             No image is available for this recipe. If you cook this, <a href = "http://www.facebook.com/Nomelette">let us know</a>!
+          <% end %>
+
 					
 					<div itemprop="summary" class="lead">
 							<%= @recipe.description.html_safe unless @recipe.description.blank? %>
@@ -46,7 +49,7 @@
 				--><div class="grid__item ten-twelfths portable-one-whole">
 						<div class="grid grid--rev">
 							
-							<div class="grid__item two-fifths palm-one-whole">
+              <div class="grid__item one-whole palm-one-whole">
 								<div class="recipe__ingredients">
 									<%= render "ingredients", :html_ingredients => @recipe.html_ingredients %>
 								</div>	
@@ -55,11 +58,7 @@
 						--><div class="grid__item three-fifths palm-one-whole">
 							<% if @recipe.has_image? %>
 								<%= image_tag @recipe.image.url(:full), :itemprop => "photo", :class => "border-1" %>
-							<% else %>
-								<p>
-									<aside class = "border-1">No image is available for this recipe. If you cook this, <a href = "http://www.facebook.com/Nomelette">let us know</a>!</aside>
-								</p>
-							<% end %>
+              <% end %>
 							</div>
 						</div>
 						<div class="grid">
@@ -73,6 +72,7 @@
 									</ol>
 
 									<%= content_tag :aside, @recipe.footnote.html_safe, :class => "grey footnote islet" unless @recipe.footnote.blank? %>
+
 								</div>
 							</div>
 						</div>
