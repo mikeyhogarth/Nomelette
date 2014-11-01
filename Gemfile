@@ -42,7 +42,7 @@ gem 'rvm-capistrano'
 
 gem 'kaminari'
 gem 'friendly_id', '~> 4.0.9'
-gem "ckeditor"
+gem "ckeditor", '4.0.4'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
 gem 'sitemap_generator'

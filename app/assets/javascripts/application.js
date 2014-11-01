@@ -14,5 +14,4 @@
 //= require jquery_ujs
 //= require recipes
 //= require home
-//= require ckeditor/init
 //= require jquery.carouFredSel-6.2.1
