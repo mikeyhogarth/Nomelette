@@ -49,17 +49,16 @@
 				--><div class="grid__item ten-twelfths portable-one-whole">
 						<div class="grid grid--rev">
 							
-              <div class="grid__item one-whole palm-one-whole">
+              <div class="grid__item <%= @recipe.has_image? ? "two-fifths" : "one-whole" %> palm-one-whole">
 								<div class="recipe__ingredients">
 									<%= render "ingredients", :html_ingredients => @recipe.html_ingredients %>
 								</div>	
 							</div><!-- 
 
-						--><div class="grid__item three-fifths palm-one-whole">
-							<% if @recipe.has_image? %>
-								<%= image_tag @recipe.image.url(:full), :itemprop => "photo", :class => "border-1" %>
-              <% end %>
-							</div>
+						--><% if @recipe.has_image? %><div class="grid__item three-fifths palm-one-whole">						
+  								<%= image_tag @recipe.image.url(:full), :itemprop => "photo", :class => "border-1" %>
+  							</div>
+             <% end %>
 						</div>
 						<div class="grid">
 							<div class="grid__item one-whole">
