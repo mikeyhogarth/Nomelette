@@ -17,4 +17,5 @@
 ActiveSupport::Inflector.inflections do |inflect|
    inflect.irregular 'water cress', 'water cress'
    inflect.irregular 'bay leaf', 'bay leaves'
+   inflect.irregular 'lemon grass', 'lemon grass'
 end
